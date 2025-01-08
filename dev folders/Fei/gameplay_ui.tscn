@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckahe0ckf132l"]
+
+[ext_resource type="Script" path="res://dev folders/Fei/gameplay_ui_handler.gd" id="1_hvpmn"]
+[ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_bkp08"]
+
+[node name="GameplayUI" type="CanvasLayer"]
+script = ExtResource("1_hvpmn")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("2_bkp08")
+centered = false
+region_enabled = true
+region_rect = Rect2(9, 50, 7, 6)
