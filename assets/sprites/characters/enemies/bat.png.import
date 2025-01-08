@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccrykbagcjxee"
-path="res://.godot/imported/ui_elements.png-8c0881e445793a6b47aa428ffe30e8f9.ctex"
+uid="uid://dnm3dmh8lvesm"
+path="res://.godot/imported/bat.png-69218adb943fec967aa7551157e1abe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/game_ui/ui_elements.png"
-dest_files=["res://.godot/imported/ui_elements.png-8c0881e445793a6b47aa428ffe30e8f9.ctex"]
+source_file="res://assets/sprites/characters/enemies/bat.png"
+dest_files=["res://.godot/imported/bat.png-69218adb943fec967aa7551157e1abe3.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
