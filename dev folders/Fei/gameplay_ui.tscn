@@ -6,10 +6,48 @@
 [node name="GameplayUI" type="CanvasLayer"]
 script = ExtResource("1_hvpmn")
 
-[node name="TextureRect" type="Sprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart Container" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7.5
+offset_top = 7.5
+offset_right = 47.5
+offset_bottom = 47.5
+scale = Vector2(7.5, 7.5)
+
+[node name="Heart Sprite" type="Sprite2D" parent="Control/Heart Container"]
 texture_filter = 1
-scale = Vector2(5, 5)
+texture_repeat = 2
 texture = ExtResource("2_bkp08")
 centered = false
 region_enabled = true
 region_rect = Rect2(9, 50, 7, 6)
+region_filter_clip_enabled = true
+
+[node name="Heart Sprite2" type="Sprite2D" parent="Control/Heart Container"]
+modulate = Color(0.278431, 0.278431, 0.227451, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(8, 0)
+texture = ExtResource("2_bkp08")
+centered = false
+region_enabled = true
+region_rect = Rect2(9, 50, 7, 6)
+region_filter_clip_enabled = true
+
+[node name="Heart Sprite3" type="Sprite2D" parent="Control/Heart Container"]
+modulate = Color(0.278431, 0.278431, 0.227451, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 0)
+texture = ExtResource("2_bkp08")
+centered = false
+region_enabled = true
+region_rect = Rect2(9, 50, 7, 6)
+region_filter_clip_enabled = true
