@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccrykbagcjxee"
-path="res://.godot/imported/ui_elements.png-8c0881e445793a6b47aa428ffe30e8f9.ctex"
+uid="uid://cc7x8bgl5efod"
+path="res://.godot/imported/weapons_animated.png-b6cb57ebb595d9530750b27aa081208a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/game_ui/ui_elements.png"
-dest_files=["res://.godot/imported/ui_elements.png-8c0881e445793a6b47aa428ffe30e8f9.ctex"]
+source_file="res://assets/sprites/weapons_and_projectiles/weapons_animated.png"
+dest_files=["res://.godot/imported/weapons_animated.png-b6cb57ebb595d9530750b27aa081208a.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
