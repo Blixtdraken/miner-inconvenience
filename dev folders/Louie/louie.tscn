@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=4 uid="uid://c2rtjxnilwan7"]
+[gd_scene load_steps=25 format=4 uid="uid://c2rtjxnilwan7"]
 
 [ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="1_54pc5"]
 [ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="1_aanh2"]
 [ext_resource type="Texture2D" uid="uid://vca0t3pjy16b" path="res://assets/sprites/grounds_and_walls/walls.png" id="2_k2yqq"]
 [ext_resource type="Texture2D" uid="uid://d1j0o8kjnre4t" path="res://assets/sprites/inputs/gamepad.png" id="4_w8x0e"]
+[ext_resource type="Texture2D" uid="uid://74a5c8mf0xdu" path="res://assets/sprites/SGQ_Enemies/normal/16x32/cube_slime.png" id="5_k2qvy"]
+[ext_resource type="Texture2D" uid="uid://bmsia4uww2d1f" path="res://assets/sprites/SGQ_Enemies/normal/32x32/medium_slime.png" id="6_5gli2"]
+[ext_resource type="Texture2D" uid="uid://cxib74puh1at1" path="res://assets/sprites/SGQ_Enemies/normal/16x16/flying_skull.png" id="7_mclop"]
+[ext_resource type="Texture2D" uid="uid://cc7x8bgl5efod" path="res://assets/sprites/weapons_and_projectiles/weapons_animated.png" id="8_682g3"]
+[ext_resource type="Texture2D" uid="uid://ckqqrfu5fue76" path="res://assets/sprites/SGQ_Enemies/normal/16x16/goblin.png" id="9_xfbvo"]
+[ext_resource type="Texture2D" uid="uid://vb6pe5lgesfu" path="res://assets/sprites/characters/main/elf.png" id="10_10ppw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npwc7"]
 texture = ExtResource("1_aanh2")
@@ -470,6 +476,85 @@ terrain_set_1/terrain_0/color = Color(0.156863, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_npwc7")
 sources/1 = SubResource("TileSetAtlasSource_lt2vp")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwjea"]
+atlas = ExtResource("7_mclop")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf6v6"]
+atlas = ExtResource("7_mclop")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68d7b"]
+atlas = ExtResource("7_mclop")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3e0w"]
+atlas = ExtResource("7_mclop")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bieor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwjea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf6v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68d7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3e0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv70a"]
+atlas = ExtResource("8_682g3")
+region = Rect2(0, 672, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdab2"]
+atlas = ExtResource("8_682g3")
+region = Rect2(48, 672, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frb0g"]
+atlas = ExtResource("8_682g3")
+region = Rect2(96, 672, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqowu"]
+atlas = ExtResource("8_682g3")
+region = Rect2(144, 672, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekaij"]
+atlas = ExtResource("8_682g3")
+region = Rect2(192, 672, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfroy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv70a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdab2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frb0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqowu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekaij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Louie" type="Node2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -496,3 +581,27 @@ texture = ExtResource("4_w8x0e")
 centered = false
 region_enabled = true
 region_rect = Rect2(146, 66, 45, 43)
+
+[node name="CubeSlime" type="Sprite2D" parent="."]
+position = Vector2(303, 256)
+texture = ExtResource("5_k2qvy")
+
+[node name="MediumSlime" type="Sprite2D" parent="."]
+position = Vector2(428, 261)
+texture = ExtResource("6_5gli2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bieor")
+frame_progress = 0.241724
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rfroy")
+frame_progress = 0.603363
+
+[node name="Goblin" type="Sprite2D" parent="."]
+position = Vector2(-82, 13)
+texture = ExtResource("9_xfbvo")
+
+[node name="Elf" type="Sprite2D" parent="."]
+position = Vector2(-137, -8)
+texture = ExtResource("10_10ppw")
