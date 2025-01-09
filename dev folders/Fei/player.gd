@@ -1,18 +1,8 @@
-@tool
-extends CharacterBody2D
+
+extends TileEntity
 
 @export
 var distance_to_move:float = 180
-@export
-var debug_render: bool:
-	get:
-		return debug_render
-	set(value):
-		queue_redraw()
-		debug_render = value
-		pos_list.append(global_position)
-@export
-var walking_tile_map: WorldTiles
 
 var pressing:bool = false
 
@@ -22,85 +12,28 @@ var waiting_on_release:bool = false
 
 var current_finger_pos:Vector2 = Vector2.ZERO
 
-var spawn_tile:Vector2 = Vector2.ZERO
+
 @onready
 var player_sprite:AnimatedSprite2D = get_node("PlayerSprite")
 
 
 
-
-var tile_pos:Vector2i = Vector2.ZERO:
-	get:
+func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
+	if  check_data == WorldTiles.TileCheckData.FLOOR:
+		return value
+		
+	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
+		print("broke")
 		return tile_pos
-	set(value):
-		if walking_tile_map.tile_check(value):
-			tile_pos = value
-			update_tile_pos(value)
-		
+		pass
+	return tile_pos
 
-var pos_list:Array = []
 
-func _set(property:StringName, value) -> bool:
-	print(property)
-	if property == "global_position":
-		print(global_position)
-		value = value as Vector2
-		tile_pos = walking_tile_map.local_to_map(value)
-	return true
-
-func _draw():
-	
-	if !debug_render or Engine.is_editor_hint():
-		pos_list.clear()
-		return
-	
-	var delta_vec:Vector2 = (current_finger_pos-start_finger_pos)
-	
-	var cirlce_color:Color = Color.RED
-	if pressing:
-		cirlce_color = Color.GREEN
-		if waiting_on_release:
-			cirlce_color = Color.AQUA
-		
-	
-	draw_line(Vector2.ZERO, Vector2.ZERO + delta_vec, Color.GREEN)
-	draw_circle(Vector2.ZERO, distance_to_move, cirlce_color , false)
-	draw_circle(walking_tile_map.map_to_local(spawn_tile)-global_position, 10, Color.AQUA*Color(1,1,1,0.5), true)
-	
-	var new_list:PackedVector2Array
-	
-	if pos_list.size() == 10:
-		pos_list.remove_at(0)
-	for pos in pos_list:
-		pos = pos as Vector2
-		new_list.append(pos-global_position)
-		draw_circle(pos-global_position, 3, Color.GREEN)
-	
-	draw_polyline(new_list,Color.GREEN)
-	pass
 func _ready():
-	if Engine.is_editor_hint():
-		return
-	update_tile_pos(Vector2.ZERO)
+	update_tile_pos(Vector2i.ZERO)
+	player_sprite.global_position = global_position
 	pass
-func _process(delta):
-	if Engine.is_editor_hint():
-		return
-	if !debug_render:
-		return
-	queue_redraw()
-	
-func update_tile_pos(new_tile:Vector2i):
-	
-	global_position = walking_tile_map.map_to_local(new_tile)
-	if debug_render:
-		pos_list.append(global_position)
-	print("Pos: " + str(tile_pos))
-	pass
-func _input(event):
-	if Engine.is_editor_hint():
-		return
-	
+func _input(event):	
 	if event is InputEventScreenTouch:
 		event = event as InputEventScreenTouch
 		if event.is_pressed():
@@ -126,7 +59,7 @@ func _input(event):
 			var vec:Vector2 = Vector2.from_angle(snappedf(delta_vec.angle(), PI / 2))
 			
 			
-			print("Vel: " + str(vec))
+		
 			
 			tile_pos += Vector2i(vec)
 			change_player_direction(vec)
@@ -153,10 +86,10 @@ func change_player_direction(dir:Vector2):
 	dir = dir.round()
 	if dir.x == 1:
 		#player_sprite.play("right")
-		player_sprite.flip_h = false
+		player_sprite.scale.x = 1
 	elif dir.x == -1:
 		#player_sprite.play("left")
-		player_sprite.flip_h = true
+		player_sprite.scale.x = -1
 	pass
 	
 		

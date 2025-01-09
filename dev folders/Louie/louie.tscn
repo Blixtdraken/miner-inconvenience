@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://dev folders/Fei/player_sprite.gd" id="14_rhjyd"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_camera.gd" id="15_cjncs"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="16_a8eut"]
-[ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="18_iu3tw"]
+[ext_resource type="PackedScene" path="res://dev folders/Louie/game_hud.tscn" id="18_iu3tw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npwc7"]
 texture = ExtResource("1_aanh2")
@@ -1182,7 +1182,7 @@ flip_h = true
 top_level = true
 sprite_frames = SubResource("SpriteFrames_dvdjk")
 animation = &"right"
-frame_progress = 0.0713799
+frame_progress = 0.311702
 script = ExtResource("14_rhjyd")
 speed = 20.0
 
