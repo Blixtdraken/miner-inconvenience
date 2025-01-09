@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://vb6pe5lgesfu" path="res://assets/sprites/characters/main/elf.png" id="2_pyor1"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_camera.gd" id="3_er1n1"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_sprite.gd" id="5_rc25g"]
-[ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="6_ho86v"]
+[ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="6_vqq54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2445"]
 size = Vector2(7, 7)
@@ -113,6 +113,7 @@ animations = [{
 [node name="Fei" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("walking_tile_map")]
+position = Vector2(8, 8)
 motion_mode = 1
 script = ExtResource("1_n0ih3")
 distance_to_move = 25.0
@@ -122,19 +123,22 @@ walking_tile_map = NodePath("../TileMapLayer")
 shape = SubResource("RectangleShape2D_i2445")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CharacterBody2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_db2l6")
 frame_progress = 0.79117
 flip_h = true
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
 top_level = true
+position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_rcv6q")
-animation = &"left"
-frame_progress = 0.427447
+animation = &"right"
+frame_progress = 0.309474
 script = ExtResource("5_rc25g")
-speed = 20.0
+speed = 15.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+offset = Vector2(0, 8)
 position_smoothing_enabled = true
 position_smoothing_speed = 9.0
 script = ExtResource("3_er1n1")
@@ -144,5 +148,8 @@ pixel_limit = 144.0
 tile_set = SubResource("TileSet_xlqu0")
 
 [node name="Polygon2D" type="Polygon2D" parent="TileMapLayer"]
-texture = ExtResource("6_ho86v")
+modulate = Color(1, 1, 1, 0.266667)
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("6_vqq54")
 polygon = PackedVector2Array(-793, -611, 828, -628, 815, 1249, -985, 1262, -985, 1262)

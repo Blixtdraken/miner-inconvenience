@@ -148,11 +148,14 @@ func _input(event):
 		change_player_direction(dir)
 			
 
-func change_player_direction(dir:Vector2i):
-	if dir.x == 1 or dir.x == 0:
-		player_sprite.play("right")
-	else:
-		player_sprite.play("left")
+func change_player_direction(dir:Vector2):
+	dir = dir.round()
+	if dir.x == 1:
+		#player_sprite.play("right")
+		player_sprite.flip_h = false
+	elif dir.x == -1:
+		#player_sprite.play("left")
+		player_sprite.flip_h = true
 	pass
 	
 		

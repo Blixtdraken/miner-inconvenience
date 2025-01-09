@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Miner Inconvenience"
+run/main_scene="res://dev folders/Fei/fei.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/sprites/icon.svg"
 
@@ -19,6 +20,7 @@ config/icon="res://assets/sprites/icon.svg"
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/size/resizable=false
+window/handheld/orientation=1
 
 [input_devices]
 
