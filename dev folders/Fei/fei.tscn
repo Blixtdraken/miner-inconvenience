@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhxkuj04ilaxn"]
+[gd_scene load_steps=22 format=3 uid="uid://bhxkuj04ilaxn"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/player.gd" id="1_n0ih3"]
 [ext_resource type="Texture2D" uid="uid://cc7x8bgl5efod" path="res://assets/sprites/weapons_and_projectiles/weapons_animated.png" id="2_mbutw"]
 [ext_resource type="Texture2D" uid="uid://vb6pe5lgesfu" path="res://assets/sprites/characters/main/elf.png" id="2_pyor1"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_camera.gd" id="3_er1n1"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_sprite.gd" id="5_rc25g"]
+[ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="6_ho86v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2445"]
 size = Vector2(7, 7)
@@ -129,7 +130,7 @@ flip_h = true
 top_level = true
 sprite_frames = SubResource("SpriteFrames_rcv6q")
 animation = &"left"
-frame_progress = 0.405054
+frame_progress = 0.427447
 script = ExtResource("5_rc25g")
 speed = 20.0
 
@@ -141,3 +142,7 @@ pixel_limit = 144.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_xlqu0")
+
+[node name="Polygon2D" type="Polygon2D" parent="TileMapLayer"]
+texture = ExtResource("6_ho86v")
+polygon = PackedVector2Array(-793, -611, 828, -628, 815, 1249, -985, 1262, -985, 1262)

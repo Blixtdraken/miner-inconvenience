@@ -33,13 +33,8 @@ var tile_pos:Vector2i = Vector2.ZERO:
 	get:
 		return tile_pos
 	set(value):
-		if !walking_tile_map.get_cell_tile_data(value):
-			tile_pos = value
-			update_tile_pos(value)
-		elif walking_tile_map.get_cell_source_id(value) == 1:
-			tile_pos = value
-			update_tile_pos(value)
-			walking_tile_map.erase_cell(value)
+		tile_pos = value
+		update_tile_pos(value)
 		
 
 var pos_list:Array = []
