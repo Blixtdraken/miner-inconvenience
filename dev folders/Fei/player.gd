@@ -12,7 +12,7 @@ var debug_render: bool:
 		debug_render = value
 		pos_list.append(global_position)
 @export
-var walking_tile_map: TileMapLayer
+var walking_tile_map: WorldTiles
 
 var pressing:bool = false
 
@@ -33,8 +33,9 @@ var tile_pos:Vector2i = Vector2.ZERO:
 	get:
 		return tile_pos
 	set(value):
-		tile_pos = value
-		update_tile_pos(value)
+		if walking_tile_map.tile_check(value):
+			tile_pos = value
+			update_tile_pos(value)
 		
 
 var pos_list:Array = []
