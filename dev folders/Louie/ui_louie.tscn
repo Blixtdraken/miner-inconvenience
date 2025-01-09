@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://5eyhy3tbu4mm"]
+
+[ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_gn6ke"]
+[ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_81mt5"]
+[ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_jd5ma"]
+[ext_resource type="Texture2D" uid="uid://ci6wdjpq4onoy" path="res://assets/sprites/game_ui/inventory.png" id="4_kiej2"]
+[ext_resource type="Texture2D" uid="uid://ccrykbagcjxee" path="res://assets/sprites/game_ui/ui_elements.png" id="5_l1cxg"]
+
+[node name="ui_louie" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hud" type="Sprite2D" parent="."]
+position = Vector2(-262, 478)
+texture = ExtResource("1_gn6ke")
+
+[node name="Icons8x8" type="Sprite2D" parent="."]
+position = Vector2(-48, 463)
+texture = ExtResource("2_81mt5")
+
+[node name="Icons16x16" type="Sprite2D" parent="."]
+position = Vector2(-131, 474)
+texture = ExtResource("3_jd5ma")
+
+[node name="Inventory" type="Sprite2D" parent="."]
+position = Vector2(-410, 442)
+texture = ExtResource("4_kiej2")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="UiElements" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 6, 8, 8)
+
+[node name="UiElements2" type="Sprite2D" parent="Node2D"]
+position = Vector2(8, 0)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(40, 6, 8, 8)
+
+[node name="UiElements3" type="Sprite2D" parent="Node2D"]
+position = Vector2(16, 0)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(40, 6, 8, 8)
+
+[node name="UiElements4" type="Sprite2D" parent="Node2D"]
+position = Vector2(24, 0)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(40, 6, 8, 8)
+
+[node name="UiElements5" type="Sprite2D" parent="Node2D"]
+position = Vector2(32, 0)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(40, 6, 8, 8)
+
+[node name="UiElements6" type="Sprite2D" parent="Node2D"]
+position = Vector2(40, 0)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(40, 6, 8, 8)
+
+[node name="UiElements7" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 8)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 16, 8, 8)
+
+[node name="UiElements8" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 16)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 16, 8, 8)
+
+[node name="UiElements9" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 24)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 16, 8, 8)
+
+[node name="UiElements10" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 32)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 16, 8, 8)
+
+[node name="UiElements11" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 40)
+texture = ExtResource("5_l1cxg")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 16, 8, 8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
