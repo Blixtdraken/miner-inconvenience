@@ -100,14 +100,14 @@ region_enabled = true
 region_rect = Rect2(30, 16, 8, 8)
 
 [node name="UiElements12" type="Sprite2D" parent="Control"]
-position = Vector2(0, 0.266662)
+position = Vector2(-60.5333, -21.3333)
 texture = ExtResource("1_y0kou")
 centered = false
 region_enabled = true
 region_rect = Rect2(30, 16, 8, 8)
 
 [node name="UiElements13" type="Sprite2D" parent="Control"]
-position = Vector2(0, 8.26666)
+position = Vector2(-60.5333, -13.3333)
 texture = ExtResource("1_y0kou")
 centered = false
 region_enabled = true
@@ -282,13 +282,14 @@ region_enabled = true
 region_rect = Rect2(40, 26, 8, 8)
 
 [node name="Icons16x16" type="Sprite2D" parent="."]
-position = Vector2(707, -216)
+position = Vector2(-312, 361)
 scale = Vector2(3.75, 3.75)
 texture = ExtResource("2_krfqb")
 
 [node name="UiElements" type="Sprite2D" parent="."]
-position = Vector2(-27, -2)
-scale = Vector2(71, 12)
+z_index = -1
+position = Vector2(-37, -13)
+scale = Vector2(76.5, 14.75)
 texture = ExtResource("1_y0kou")
 centered = false
 region_enabled = true
