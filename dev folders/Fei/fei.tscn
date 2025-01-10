@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://bhxkuj04ilaxn"]
+[gd_scene load_steps=23 format=4 uid="uid://bhxkuj04ilaxn"]
 
+[ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_41dno"]
 [ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/player.tscn" id="1_jois4"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="4_17jor"]
 [ext_resource type="Texture2D" uid="uid://hqjooluwhyn7" path="res://assets/sprites/grounds_and_walls/walls2.png" id="6_632fj"]
@@ -9,6 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://q85tas85kig1" path="res://assets/sprites/characters/enemies/slime.png" id="7_8qncp"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="9_hk0si"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixtik"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkfx"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1flql"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(0, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7txb5"]
 atlas = ExtResource("7_8qncp")
 region = Rect2(0, 32, 16, 16)
@@ -17,8 +30,38 @@ region = Rect2(0, 32, 16, 16)
 atlas = ExtResource("7_8qncp")
 region = Rect2(16, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_afwrn"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft3tm"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbcxu"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpdd2"]
+atlas = ExtResource("7_8qncp")
+region = Rect2(48, 64, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cyj0g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixtik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlkfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1flql")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7txb5")
@@ -29,6 +72,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lrri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afwrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft3tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbcxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpdd2")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 24.0
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ys6wl"]
@@ -121,6 +184,7 @@ texture = ExtResource("9_hk0si")
 7:7/0 = 0
 8:7/0 = 0
 9:7/0 = 0
+9:7/0/modulate = Color(0.867126, 5.77569e-07, 0.469394, 1)
 10:7/0 = 0
 11:7/0 = 0
 0:8/0 = 0
@@ -159,25 +223,28 @@ sources/2 = SubResource("TileSetAtlasSource_ys6wl")
 sources/3 = SubResource("TileSetAtlasSource_yeou3")
 
 [node name="Fei" type="Node2D"]
+script = ExtResource("1_41dno")
 
 [node name="Player" parent="." node_paths=PackedStringArray("world_tiles") instance=ExtResource("1_jois4")]
 world_tiles = NodePath("../WorldTiles")
-spawn_tile = Vector2i(0, 0)
 
 [node name="Sprite" parent="Player" index="0"]
-frame_progress = 0.412062
+frame = 0
+frame_progress = 0.0
 
 [node name="Slime" type="Node2D" parent="." node_paths=PackedStringArray("world_tiles")]
+z_index = 10
 position = Vector2(24, 24)
 script = ExtResource("6_qq6m5")
 world_tiles = NodePath("../WorldTiles")
-spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Slime"]
 top_level = true
 position = Vector2(24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.837412
+animation = &"attack"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("4_17jor")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Slime"]
@@ -190,6 +257,9 @@ time_horizon_agents = 3.95
 debug_enabled = true
 debug_path_custom_point_size = 0.05
 debug_path_custom_line_width = 0.4
+
+[node name="DamageTimer" type="Timer" parent="Slime"]
+wait_time = 0.2
 
 [node name="WorldTiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -209,5 +279,9 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("6_vqq54")
 polygon = PackedVector2Array(-793, -611, 828, -628, 815, 1249, -985, 1262, -985, 1262)
+
+[node name="TurnWait" type="Timer" parent="WorldTiles"]
+wait_time = 0.2
+one_shot = true
 
 [editable path="Player"]

@@ -27,7 +27,7 @@ var tile_pos:Vector2i = Vector2.ZERO:
 		if !force_tile_pos:
 			_on_after_walked(tile_pos, check_data)
 
-var force_tile_pos:bool = false
+var force_tile_pos:bool = true
 
 var pos_list:Array = []
 
@@ -50,4 +50,7 @@ func update_tile_pos(new_tile:Vector2i):
 	global_position = world_tiles.map_to_local(new_tile)
 
 func _on_turn():
+	pass
+
+func _on_damage(damage:int):
 	pass

@@ -1,6 +1,7 @@
 class_name Player
 extends TileEntity
 
+var hp:int = 3
 @export
 var distance_to_move:float = 180
 
@@ -19,29 +20,33 @@ var player_sprite:AnimatedSprite2D = get_node("Sprite")
 
 
 func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
-	print(value)
-	print(WorldTiles.TileCheckData.keys()[check_data])
 	if  check_data == WorldTiles.TileCheckData.FLOOR:
 		return value
 		
-	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
-		#print("broke")
+	elif check_data == WorldTiles.TileCheckData.ENEMY:
+		var enemy: EnemyEntity = world_tiles.get_entity_at_tile(value)
+		player_sprite.play("attack")
+		enemy._on_damage(1)
 		return tile_pos
 		pass
 	return tile_pos
 
 func _on_after_walked(value:Vector2i,  check_data:WorldTiles.TileCheckData):
-	if  check_data == WorldTiles.TileCheckData.FLOOR:
+	if check_data != WorldTiles.TileCheckData.BORDER:
 		world_tiles.trigger_turns()
-	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
-		world_tiles.trigger_turns()
+	pass
+
+func _on_damage(damage:int):
+	player_sprite.play("hurt")
 	pass
 
 func _ready():
 	world_tiles.player_entity = self
 	player_sprite.global_position = global_position
 	pass
-func _input(event):	
+func _input(event):
+	if !world_tiles.waiting_for_turn:
+		return
 	if event is InputEventScreenTouch:
 		event = event as InputEventScreenTouch
 		if event.is_pressed():
