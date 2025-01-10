@@ -1,4 +1,4 @@
-
+class_name Player
 extends TileEntity
 
 @export
@@ -19,17 +19,23 @@ var player_sprite:AnimatedSprite2D = get_node("Sprite")
 
 
 func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
+	print(value)
+	print(WorldTiles.TileCheckData.keys()[check_data])
 	if  check_data == WorldTiles.TileCheckData.FLOOR:
-		world_tiles.trigger_turns()
 		return value
 		
 	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
-		world_tiles.trigger_turns()
-		print("broke")
+		#print("broke")
 		return tile_pos
 		pass
 	return tile_pos
 
+func _on_after_walked(value:Vector2i,  check_data:WorldTiles.TileCheckData):
+	if  check_data == WorldTiles.TileCheckData.FLOOR:
+		world_tiles.trigger_turns()
+	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
+		world_tiles.trigger_turns()
+	pass
 
 func _ready():
 	world_tiles.player_entity = self

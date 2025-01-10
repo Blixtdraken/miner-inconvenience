@@ -11,7 +11,7 @@ var parent:Node2D = get_parent()
 var functional_pos:Vector2 = Vector2.ZERO
 func _ready():
 	#global_position = parent.global_position
-	play("right")
+	play("default")
 	pass
 
 func _process(delta):
