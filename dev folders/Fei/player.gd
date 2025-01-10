@@ -14,15 +14,17 @@ var current_finger_pos:Vector2 = Vector2.ZERO
 
 
 @onready
-var player_sprite:AnimatedSprite2D = get_node("PlayerSprite")
+var player_sprite:AnimatedSprite2D = get_node("Sprite")
 
 
 
 func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
 	if  check_data == WorldTiles.TileCheckData.FLOOR:
+		world_tiles.trigger_turns()
 		return value
 		
 	elif check_data == WorldTiles.TileCheckData.BREAKABLE:
+		world_tiles.trigger_turns()
 		print("broke")
 		return tile_pos
 		pass
@@ -30,7 +32,7 @@ func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector
 
 
 func _ready():
-	update_tile_pos(Vector2i.ZERO)
+	world_tiles.player_entity = self
 	player_sprite.global_position = global_position
 	pass
 func _input(event):	

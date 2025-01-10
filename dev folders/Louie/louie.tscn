@@ -1165,10 +1165,9 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 80, 16, 16)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("walking_tile_map")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("13_isg2f")
 distance_to_move = 25.0
-walking_tile_map = NodePath("../TileMapLayer2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_ugfy6")
