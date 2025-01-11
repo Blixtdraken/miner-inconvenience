@@ -27,13 +27,17 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		enemy._on_damage(1)
 		return tile_pos
 		pass
+	
 	if tile_info.tile_type == TileInfo.TileType.FLOOR:
 		return value
+	elif tile_info.tile_type == TileInfo.TileType.GROUND:
+		
+		return tile_pos
 		
 	return tile_pos
 
 func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
-	if tile_info.tile_type == TileInfo.TileType.BORDER:	
+	if tile_info.tile_type != TileInfo.TileType.BORDER:	
 		world_tiles.trigger_turns()
 	pass
 
