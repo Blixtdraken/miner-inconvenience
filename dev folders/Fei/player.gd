@@ -19,20 +19,21 @@ var player_sprite:AnimatedSprite2D = get_node("Sprite")
 
 
 
-func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
-	if  check_data == WorldTiles.TileCheckData.FLOOR:
-		return value
-		
-	elif check_data == WorldTiles.TileCheckData.ENEMY:
+func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
+	
+	if tile_info.tile_entity:
 		var enemy: EnemyEntity = world_tiles.get_entity_at_tile(value)
 		player_sprite.play("attack")
 		enemy._on_damage(1)
 		return tile_pos
 		pass
+	if tile_info.tile_type == TileInfo.TileType.FLOOR:
+		return value
+		
 	return tile_pos
 
-func _on_after_walked(value:Vector2i,  check_data:WorldTiles.TileCheckData):
-	if check_data != WorldTiles.TileCheckData.BORDER:
+func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
+	if tile_info.tile_type == TileInfo.TileType.BORDER:	
 		world_tiles.trigger_turns()
 	pass
 

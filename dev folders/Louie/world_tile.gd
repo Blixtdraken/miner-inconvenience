@@ -79,25 +79,11 @@ func _process(delta):
 	pass
 
 
-func tile_check(tile_pos:Vector2i)->TileCheckData:
+func tile_check(tile_pos:Vector2i)->TileInfo:
 	
-	if get_cell_source_id(tile_pos) == 2:
-
-		erase_cell(tile_pos)
-		return TileCheckData.BREAKABLE
-	
+	var tile_data:TileData = get_cell_tile_data(tile_pos)
 	var tile_entity:TileEntity = get_entity_at_tile(tile_pos)
-
-	if tile_entity:
 	
-		match tile_entity.get_script():
-			EnemyEntity:
-				return TileCheckData.ENEMY
-			Player:
-				return TileCheckData.PLAYER
-		
-		
-
-	return TileCheckData.FLOOR
+	return TileInfo.new(tile_pos, tile_entity, tile_data)
 	
 	

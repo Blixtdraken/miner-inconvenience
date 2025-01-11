@@ -14,11 +14,11 @@ func _ready() -> void:
 	sprite.global_position = global_position
 	pass
 
-func _on_try_walk(value:Vector2i, check_data:WorldTiles.TileCheckData) -> Vector2i:
-	print(WorldTiles.TileCheckData.keys()[check_data])
-	if  check_data == WorldTiles.TileCheckData.FLOOR:
+func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
+	print(TileInfo.TileType.keys()[tile_info])
+	if  tile_info.tile_type == TileInfo.TileType.FLOOR:
 		return value
-	elif check_data == WorldTiles.TileCheckData.PLAYER:
+	elif tile_info.tile_entity and tile_info.tile_entity is Player:
 		print("HIT THE HTING")
 		var player:Player = world_tiles.get_entity_at_tile(value)
 		player._on_damage(1)
