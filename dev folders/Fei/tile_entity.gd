@@ -54,3 +54,8 @@ func _on_turn():
 
 func _on_damage(damage:int):
 	pass
+
+func kill():
+	world_tiles.tile_entities.erase(tile_pos)
+	queue_free()
+	pass

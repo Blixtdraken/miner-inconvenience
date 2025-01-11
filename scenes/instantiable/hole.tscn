@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtdkb483ahswp"]
+
+[ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="1_l3v5q"]
+[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="2_wml8y"]
+
+[node name="Ore" type="Node2D"]
+position = Vector2(168, 0)
+script = ExtResource("1_l3v5q")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_wml8y")
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)

@@ -22,16 +22,18 @@ var player_sprite:AnimatedSprite2D = get_node("Sprite")
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	
 	if tile_info.tile_entity:
-		var enemy: EnemyEntity = world_tiles.get_entity_at_tile(value)
-		player_sprite.play("attack")
-		enemy._on_damage(1)
+		if tile_info.tile_entity is EnemyEntity:
+			var enemy: EnemyEntity = world_tiles.get_entity_at_tile(value)
+			player_sprite.play("attack")
+			enemy._on_damage(1)
 		return tile_pos
 		pass
 	
 	if tile_info.tile_type == TileInfo.TileType.FLOOR:
 		return value
 	elif tile_info.tile_type == TileInfo.TileType.GROUND:
-		
+		print("Wowie")
+		world_tiles.destroy_tile(value)
 		return tile_pos
 		
 	return tile_pos

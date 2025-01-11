@@ -1,13 +1,10 @@
 class_name EnemyEntity
 extends TileEntity
 
-var hp:int = 2
+var hp:int = 1
 
 @onready
 var sprite:AnimatedSprite2D = get_node("Sprite")
-
-@onready
-var nav_agent:NavigationAgent2D = get_node("NavAgent")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
@@ -71,4 +68,6 @@ func _on_turn():
 func _on_damage(damage:int):
 	sprite.play("hurt")
 	hp -= damage
+	if hp <= 0:
+		kill()
 	pass

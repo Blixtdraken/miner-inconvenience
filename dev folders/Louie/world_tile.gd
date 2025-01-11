@@ -8,6 +8,9 @@ var tile_entities:Dictionary = {}
 
 var player_entity:TileEntity = null
 
+@onready
+var hidden_tiles:TileMapLayer = get_node("HiddenTiles")
+
 func get_tile_entiteties()->Array[TileEntity]:
 	var temp_array:Array[TileEntity] = []
 
@@ -65,9 +68,8 @@ func update_navmesh():
 		for j in get_used_rect().size.y:
 			var coords = Vector2i(i, j) + get_used_rect().position
 			var tile_data = get_cell_tile_data(coords)
-			
-			if tile_data and tile_data.get_custom_data("type") == "ground":
-				
+			var tile_entity:TileEntity = get_entity_at_tile(coords)
+			if tile_data and tile_data.get_custom_data("type") == "ground" or tile_entity and tile_entity is EnemyEntity:
 				
 				astar.set_point_solid(coords, true)
 			else:
@@ -86,5 +88,15 @@ func tile_check(tile_pos:Vector2i)->TileInfo:
 	
 	return TileInfo.new(tile_pos, tile_entity, tile_data)
 
-func destroy_tile():
-	pass	
+func destroy_tile(tile_pos:Vector2i)->bool:
+	var tile_info:TileInfo = tile_check(tile_pos)
+	if tile_info.tile_type == TileInfo.TileType.GROUND:
+		
+		
+		set_cells_terrain_connect([tile_pos], 0, 1, false)
+		
+		return true
+	else:
+		return false
+	return false
+		
