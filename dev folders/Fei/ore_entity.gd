@@ -1,6 +1,6 @@
 extends TileEntity
 
-class_name OreEntiy
+class_name OreEntity
 
 func _on_damage(damage:int):
 	world_tiles.tile_entities.erase(tile_pos)

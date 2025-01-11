@@ -69,7 +69,7 @@ func update_navmesh():
 			var coords = Vector2i(i, j) + get_used_rect().position
 			var tile_data = get_cell_tile_data(coords)
 			var tile_entity:TileEntity = get_entity_at_tile(coords)
-			if tile_data and tile_data.get_custom_data("type") == "ground" or tile_entity and (tile_entity is EnemyEntity or tile_entity is OreEntiy):
+			if tile_data and tile_data.get_custom_data("type") == "ground" or tile_entity and tile_entity is not Player:
 				
 				astar.set_point_solid(coords, true)
 			else:
