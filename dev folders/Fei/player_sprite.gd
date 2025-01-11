@@ -1,4 +1,5 @@
-extends AnimatedSprite2D
+@tool
+extends EntityAnimatedSprite
 
 
 @export
@@ -8,8 +9,12 @@ var speed:float = 15
 var parent:Node2D = get_parent()
 
 var functional_pos:Vector2 = Vector2.ZERO
+
+func _setup():
+	functional_pos = parent.global_position
+	pass
 func _ready():
-	#global_position = parent.global_position
+	functional_pos = parent.global_position
 	play("default")
 	animation_finished.connect(animation_stopped)
 	pass

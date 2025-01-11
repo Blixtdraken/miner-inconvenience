@@ -29,7 +29,7 @@ var tile_pos:Vector2i = Vector2.ZERO:
 
 var force_tile_pos:bool = true
 
-var pos_list:Array = []
+
 
 func _ready() -> void:
 	
