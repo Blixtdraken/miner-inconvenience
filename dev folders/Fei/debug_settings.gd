@@ -1,3 +1,3 @@
 extends Node
 
-var debug_paths:bool = false
+var debug_paths:bool = true

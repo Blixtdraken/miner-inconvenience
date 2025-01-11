@@ -1748,7 +1748,7 @@ position = Vector2(24, 24)
 [node name="Sprite" parent="Player" index="0"]
 position = Vector2(24, 24)
 animation = &"default"
-frame_progress = 0.836417
+frame_progress = 0.648544
 offset = Vector2(0, -4)
 
 [node name="Slime" type="Node2D" parent="."]
@@ -1761,7 +1761,7 @@ spawn_tile = Vector2i(-2, 2)
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.308841
+frame_progress = 0.120968
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
@@ -1775,7 +1775,7 @@ spawn_tile = Vector2i(0, 1)
 top_level = true
 position = Vector2(8, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.308841
+frame_progress = 0.120968
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
@@ -1790,7 +1790,7 @@ tile_set = SubResource("TileSet_5dlhx")
 script = ExtResource("6_t45sl")
 
 [node name="TurnWait" type="Timer" parent="WorldTiles"]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Ore" type="Node2D" parent="."]
