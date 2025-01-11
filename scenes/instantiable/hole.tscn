@@ -44,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1plqb")
 }],
-"loop": true,
+"loop": false,
 "name": &"break",
 "speed": 6.0
 }]
@@ -57,3 +57,4 @@ spawn_tile = Vector2i(-8, -4)
 sprite_frames = SubResource("SpriteFrames_6yype")
 animation = &"break"
 frame = 5
+frame_progress = 1.0
