@@ -60,10 +60,11 @@ func _ready():
 
 
 func update_navmesh():
+	
 	var tilemap_size = get_used_rect().size
 	var map_rect = Rect2i(Vector2i.ZERO,tilemap_size)
 	astar.region = get_used_rect()
-	
+	astar.update()
 	for i in get_used_rect().size.x:
 		for j in get_used_rect().size.y:
 			var coords = Vector2i(i, j) + get_used_rect().position
@@ -74,7 +75,7 @@ func update_navmesh():
 				astar.set_point_solid(coords, true)
 			else:
 				astar.set_point_solid(coords, false)
-	
+	astar.update()
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

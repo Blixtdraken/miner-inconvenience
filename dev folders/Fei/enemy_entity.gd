@@ -27,11 +27,15 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 
 var path_points:Array[Vector2i] = []
 
+
 func _process(delta: float) -> void:
-	queue_redraw()
+	if DebugSettings.debug_paths:
+		queue_redraw()
 	pass
 	
 func _draw() -> void:
+	if !DebugSettings.debug_paths:
+		return
 	if !world_tiles:
 		return
 	
@@ -63,6 +67,7 @@ func _on_turn():
 		dir = dir.normalized()
 		tile_pos += dir as Vector2i
 	#print(dir)
+	
 	pass
 
 func _on_damage(damage:int):
