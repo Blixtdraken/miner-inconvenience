@@ -22,8 +22,8 @@ var player_sprite:AnimatedSprite2D = get_node("Sprite")
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	
 	if tile_info.tile_entity:
-		if tile_info.tile_entity is EnemyEntity:
-			var enemy: EnemyEntity = world_tiles.get_entity_at_tile(value)
+		if tile_info.tile_entity is TileEntity:
+			var enemy: TileEntity = world_tiles.get_entity_at_tile(value)
 			player_sprite.play("attack")
 			enemy._on_damage(1)
 		return tile_pos
@@ -47,7 +47,7 @@ func _on_damage(damage:int):
 	player_sprite.play("hurt")
 	pass
 
-func _ready():
+func _on_start():
 	world_tiles.player_entity = self
 	player_sprite.global_position = global_position
 	pass

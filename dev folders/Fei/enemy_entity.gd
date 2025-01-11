@@ -7,8 +7,8 @@ var hp:int = 1
 var sprite:AnimatedSprite2D = get_node("Sprite")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _ready() -> void:
-	sprite.global_position = global_position
+func _on_start() -> void:
+	sprite.setup()
 	pass
 
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:

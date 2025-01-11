@@ -1,13 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtdkb483ahswp"]
+[gd_scene load_steps=9 format=3 uid="uid://oycmr5mcvqg6"]
 
-[ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="1_l3v5q"]
-[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="2_wml8y"]
+[ext_resource type="Script" path="res://dev folders/Fei/hole_entity.gd" id="1_aq8hd"]
+[ext_resource type="Texture2D" uid="uid://d3wyp1puvsqjw" path="res://assets/sprites/props/animated_props.png" id="2_lbcn6"]
 
-[node name="Ore" type="Node2D"]
-position = Vector2(168, 0)
-script = ExtResource("1_l3v5q")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q300r"]
+atlas = ExtResource("2_lbcn6")
+region = Rect2(64, 64, 16, 16)
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_wml8y")
-region_enabled = true
-region_rect = Rect2(0, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms7dy"]
+atlas = ExtResource("2_lbcn6")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe6j4"]
+atlas = ExtResource("2_lbcn6")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii7o8"]
+atlas = ExtResource("2_lbcn6")
+region = Rect2(112, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1plqb"]
+atlas = ExtResource("2_lbcn6")
+region = Rect2(128, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yype"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q300r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms7dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe6j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii7o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1plqb")
+}],
+"loop": false,
+"name": &"break",
+"speed": 6.0
+}]
+
+[node name="Hole" type="Node2D"]
+script = ExtResource("1_aq8hd")
+spawn_tile = Vector2i(-8, -4)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6yype")
+animation = &"break"
+frame = 5
+frame_progress = 1.0
