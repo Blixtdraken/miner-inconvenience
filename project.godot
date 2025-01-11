@@ -22,13 +22,13 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 GlobalScore="*res://global_score.gd"
+DebugSettings="*res://dev folders/Fei/debug_settings.gd"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/size/resizable=false
-window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input]
