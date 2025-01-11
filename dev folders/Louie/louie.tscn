@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=4 uid="uid://c2rtjxnilwan7"]
+[gd_scene load_steps=59 format=4 uid="uid://c2rtjxnilwan7"]
 
 [ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="1_54pc5"]
 [ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="1_aanh2"]
-[ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="1_rb5wd"]
 [ext_resource type="Texture2D" uid="uid://vca0t3pjy16b" path="res://assets/sprites/grounds_and_walls/walls.png" id="2_k2yqq"]
 [ext_resource type="Texture2D" uid="uid://hqjooluwhyn7" path="res://assets/sprites/grounds_and_walls/walls2.png" id="4_cmfjg"]
 [ext_resource type="Texture2D" uid="uid://d1j0o8kjnre4t" path="res://assets/sprites/inputs/gamepad.png" id="4_w8x0e"]
@@ -18,10 +17,12 @@
 [ext_resource type="Script" path="res://dev folders/Fei/player_sprite.gd" id="14_rhjyd"]
 [ext_resource type="Script" path="res://dev folders/Fei/player_camera.gd" id="15_cjncs"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="16_a8eut"]
-[ext_resource type="PackedScene" path="res://dev folders/Louie/game_hud.tscn" id="18_iu3tw"]
+[ext_resource type="AudioStream" uid="uid://bg77rcm4skd8b" path="res://assets/sound/sound effects/player sfx/Move.wav" id="18_15y40"]
+[ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="18_iu3tw"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="21_qpgpd"]
 [ext_resource type="Texture2D" uid="uid://ci6wdjpq4onoy" path="res://assets/sprites/game_ui/inventory.png" id="22_bn7ri"]
 [ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="23_iwcfc"]
+[ext_resource type="Texture2D" uid="uid://ccrykbagcjxee" path="res://assets/sprites/game_ui/ui_elements.png" id="24_imtan"]
 [ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="24_vn5ff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6qh1"]
@@ -1150,11 +1151,8 @@ animations = [{
 
 [node name="Louie" type="Node2D"]
 
-[node name="cave_gen_test" type="Node2D" parent="." node_paths=PackedStringArray("dirt_tilemap", "wall_tilemap")]
+[node name="cave_gen_test" type="Node2D" parent="."]
 rotation = 0.173704
-script = ExtResource("1_rb5wd")
-dirt_tilemap = NodePath("../TileMapLayer")
-wall_tilemap = NodePath("../WorldTiles")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(370.5, 312.5)
@@ -1250,6 +1248,11 @@ sprite_frames = SubResource("SpriteFrames_rfroy")
 autoplay = "default"
 frame_progress = 0.46815
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("18_15y40")
+pitch_scale = 2.82
+autoplay = true
+
 [node name="Grounds" type="Sprite2D" parent="."]
 position = Vector2(-423, -363)
 texture = ExtResource("1_aanh2")
@@ -1279,4 +1282,16 @@ texture = ExtResource("23_iwcfc")
 
 [node name="Icons16x16" type="Sprite2D" parent="."]
 position = Vector2(451, 460)
+texture = ExtResource("24_vn5ff")
+
+[node name="UiElements" type="Sprite2D" parent="."]
+position = Vector2(-800, 214)
+texture = ExtResource("24_imtan")
+
+[node name="Hud2" type="Sprite2D" parent="."]
+position = Vector2(-590, 188)
+texture = ExtResource("21_qpgpd")
+
+[node name="Icons16x17" type="Sprite2D" parent="."]
+position = Vector2(-1001, 245)
 texture = ExtResource("24_vn5ff")
