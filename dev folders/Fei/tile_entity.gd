@@ -31,17 +31,20 @@ var force_tile_pos:bool = true
 
 var pos_list:Array = []
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	
 	if %WorldTiles:
 		world_tiles = %WorldTiles
-		
-	world_tiles.tile_entities[spawn_tile] = self
-	force_tile_pos = true
-	tile_pos = spawn_tile
-	force_tile_pos = false
+	if world_tiles:
+		world_tiles.tile_entities[spawn_tile] = self
+		force_tile_pos = true
+		tile_pos = spawn_tile
+		force_tile_pos = false
 	pass
+	_on_start()
 
+func _on_start():
+	pass
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	return value
 func _on_after_walked(value:Vector2i, tile_info:TileInfo):
