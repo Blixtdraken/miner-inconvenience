@@ -1,296 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=2 format=3 uid="uid://gqnayxf0c328"]
 
-[ext_resource type="Texture2D" uid="uid://ccrykbagcjxee" path="res://assets/sprites/game_ui/ui_elements.png" id="1_y0kou"]
-[ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="2_krfqb"]
+[ext_resource type="Texture2D" uid="uid://ior044m8sfkw" path="res://assets/sprites/game_ui/cut_ui/cut_thin_brick_top.png" id="1_wrlht"]
 
 [node name="game_hud" type="CanvasLayer"]
-
-[node name="Container" type="Container" parent="."]
-offset_left = -266.0
-offset_top = -125.0
-offset_right = -226.0
-offset_bottom = -85.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.75, 3.75)
 
-[node name="UiElements" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 6, 8, 8)
-
-[node name="UiElements2" type="Sprite2D" parent="Control"]
-position = Vector2(-62.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 6, 8, 8)
-
-[node name="UiElements3" type="Sprite2D" parent="Control"]
-position = Vector2(-54.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 6, 8, 8)
-
-[node name="UiElements4" type="Sprite2D" parent="Control"]
-position = Vector2(-46.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 6, 8, 8)
-
-[node name="UiElements5" type="Sprite2D" parent="Control"]
-position = Vector2(-38.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 6, 8, 8)
-
-[node name="UiElements6" type="Sprite2D" parent="Control"]
-position = Vector2(-30.9333, -33.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 6, 8, 8)
-
-[node name="UiElements7" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, -25.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements8" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, -17.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements9" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, -9.33334)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements10" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, -1.33334)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements11" type="Sprite2D" parent="Control"]
-position = Vector2(-70.9333, 6.66666)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements12" type="Sprite2D" parent="Control"]
-position = Vector2(-60.5333, -21.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 16, 8, 8)
-
-[node name="UiElements13" type="Sprite2D" parent="Control"]
-position = Vector2(-60.5333, -13.3333)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(30, 26, 8, 8)
-
-[node name="UiElements14" type="Sprite2D" parent="Control"]
-position = Vector2(88, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements15" type="Sprite2D" parent="Control"]
-position = Vector2(80, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements16" type="Sprite2D" parent="Control"]
-position = Vector2(136, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements17" type="Sprite2D" parent="Control"]
-position = Vector2(104, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements18" type="Sprite2D" parent="Control"]
-position = Vector2(112, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements19" type="Sprite2D" parent="Control"]
-position = Vector2(120, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements20" type="Sprite2D" parent="Control"]
-position = Vector2(128, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements21" type="Sprite2D" parent="Control"]
-position = Vector2(96, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements22" type="Sprite2D" parent="Control"]
-position = Vector2(24, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements23" type="Sprite2D" parent="Control"]
-position = Vector2(16, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements24" type="Sprite2D" parent="Control"]
-position = Vector2(72, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements25" type="Sprite2D" parent="Control"]
-position = Vector2(40, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements26" type="Sprite2D" parent="Control"]
-position = Vector2(48, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements27" type="Sprite2D" parent="Control"]
-position = Vector2(56, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements28" type="Sprite2D" parent="Control"]
-position = Vector2(64, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements29" type="Sprite2D" parent="Control"]
-position = Vector2(32, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements30" type="Sprite2D" parent="Control"]
-position = Vector2(-40, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements31" type="Sprite2D" parent="Control"]
-position = Vector2(-48, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements32" type="Sprite2D" parent="Control"]
-position = Vector2(8, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements33" type="Sprite2D" parent="Control"]
-position = Vector2(-24, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements34" type="Sprite2D" parent="Control"]
-position = Vector2(-16, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements35" type="Sprite2D" parent="Control"]
-position = Vector2(-8, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements36" type="Sprite2D" parent="Control"]
-position = Vector2(9.53674e-06, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="UiElements37" type="Sprite2D" parent="Control"]
-position = Vector2(-32, 24.2667)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 26, 8, 8)
-
-[node name="Icons16x16" type="Sprite2D" parent="."]
-position = Vector2(-312, 361)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -396.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(3.75, 3.75)
-texture = ExtResource("2_krfqb")
 
-[node name="UiElements" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-37, -13)
-scale = Vector2(76.5, 14.75)
-texture = ExtResource("1_y0kou")
-centered = false
-region_enabled = true
-region_rect = Rect2(40, 16, 8, 8)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+flip_v = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+flip_v = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2

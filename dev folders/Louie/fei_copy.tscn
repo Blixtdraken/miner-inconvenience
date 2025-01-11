@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=32 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/player.tscn" id="2_i34i0"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_entity.gd" id="3_cpgch"]
+[ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
 [ext_resource type="Texture2D" uid="uid://q85tas85kig1" path="res://assets/sprites/characters/enemies/slime.png" id="4_6tinq"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="5_x2c50"]
 [ext_resource type="Texture2D" uid="uid://vca0t3pjy16b" path="res://assets/sprites/grounds_and_walls/walls.png" id="6_sxk8i"]
@@ -11,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c0o8nqd04ww8e" path="res://assets/sprites/grounds_and_walls/empty_tile.png" id="9_p3u2w"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="10_4oa76"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
+[ext_resource type="PackedScene" uid="uid://hu48ukskdqa5" path="res://scenes/instantiable/ores/coal.tscn" id="14_0e8oq"]
+[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixtik"]
 atlas = ExtResource("4_6tinq")
@@ -1693,6 +1696,9 @@ animation = &"default"
 frame = 0
 frame_progress = 0.0
 
+[node name="game_hud" parent="Player" instance=ExtResource("3_feewc")]
+visible = false
+
 [node name="Slime" type="Node2D" parent="."]
 z_index = 10
 position = Vector2(24, 24)
@@ -1754,14 +1760,32 @@ wait_time = 0.2
 
 [node name="WorldTiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray("AADu/wUAAAAAAAgAAAADAAMAAgALAA8AAAADAAIAAgALAA4AAAADAAEAAgALAA4AAAADAAAAAgALAA0AAAADAP//AgALAAwAAAACAAMAAgAJAA8AAAACAAIAAgAMAAwAAAACAAEAAgAJAA4AAAACAAAAAgAJAA4AAAACAP//AgAJAAwAAAABAAMAAgAJAA8AAAABAAIAAgAJAA4AAAABAAEAAgAMAAwAAAABAAAAAgAJAA4AAAABAP//AgAKAAwAAAAAAAMAAgAJAA8AAAAAAAIAAgAMAAwAAAAAAAEAAgAJAA4AAAAAAAAAAgAMAAwAAAAAAP//AgAKAAwAAAD//wMAAgAJAA8AAAD//wIAAgAMAAwAAAD//wEAAgAJAA4AAAD//wAAAgAMAAwAAAD/////AgAJAAwAAAD+/wMAAgAJAA8AAAD+/wIAAgAJAA4AAAD+/wEAAgAJAA4AAAD+/wAAAgAJAA4AAAD+////AgAKAAwAAAD9/wMAAgAJAA8AAAD9/wIAAgAJAA4AAAD9/wEAAgAMAAwAAAD9/wAAAgAMAAwAAAD9////AgAKAAwAAAD8/wAAAgAIAA0AAAD8////AgAIAAwAAAD8/wEAAgAIAA0AAAD8/wIAAgAIAA0AAAD8/wMAAgAIAA8AAAD+/wQAAQABAAwAAAD9/wQAAQABAAwAAAD8/wQAAQABAAwAAAD///7/AgAAAA0AAAD//wQAAQABAAwAAAAAAP7/AQACAAoAAAAAAAQAAQABAAwAAAABAP7/AQABAAsAAAABAAQAAQABAAwAAAACAP7/AgAAAA0AAAACAAQAAQABAAwAAAADAP7/AQACAAoAAAADAAQAAQABAAwAAAAEAP//AQACAAoAAAAEAAAAAgADAA8AAAAEAP7/AQAAAAoAAAAEAAEAAQADAAsAAAAEAAIAAQADAAwAAAAEAAMAAQADAAwAAAAEAAQAAQADAA0AAAD7/wAAAQABAAoAAAD7////AQABAAoAAAD7/wEAAQABAAoAAAD7/wIAAQABAAoAAAD7/wMAAQABAAoAAAD7/wQAAQAAAAwAAAD7//7/AQABAA0AAAD8//7/AQADAAoAAAD9//7/AQADAAoAAAD+//7/AQABAAsAAAAFAAAAAQADAAwAAAAFAAEAAQADAA0AAAAFAP//AQAAAAoAAAD+//3/AQABAAoAAAD///3/AgAAAA0AAAAAAP3/AQADAAwAAAD+//z/AQABAAoAAAD///z/AgAAAA0AAAAAAPz/AQADAAsAAAD+//v/AQABAAoAAAD///v/AgABAAwAAAAAAPv/AgACAA8AAAD+//r/AQABAA0AAAD///r/AQADAAoAAAAAAPr/AQADAAoAAAABAPv/AgACAA8AAAABAPz/AQACAAwAAAABAPr/AQADAAoAAAACAPv/AgADAAwAAAACAPz/AgAAAA0AAAACAPr/AQADAAoAAAADAPv/AQADAAwAAAADAPz/AQADAAwAAAADAPr/AQAAAAoAAAADAP3/AQADAAwAAAACAP3/AgAAAA0AAAABAP3/AQABAAoAAAA=")
+tile_map_data = PackedByteArray("AADu/wUAAAAAAAgAAAADAAMAAgALAA8AAAADAAIAAgALAA4AAAADAAEAAgALAA4AAAADAAAAAgALAA0AAAADAP//AgALAAwAAAACAAMAAgAJAA8AAAACAAIAAgAMAAwAAAACAAEAAgAJAA4AAAACAAAAAgAJAA4AAAACAP//AgAJAAwAAAABAAMAAgAJAA8AAAABAAIAAgAJAA4AAAABAAEAAgAMAAwAAAABAAAAAgAJAA4AAAABAP//AgAKAAwAAAAAAAMAAgAJAA8AAAAAAAIAAgAMAAwAAAAAAAEAAgAJAA4AAAAAAAAAAgAMAAwAAAAAAP//AgAKAAwAAAD//wMAAgAJAA8AAAD//wIAAgAMAAwAAAD//wEAAgAJAA4AAAD//wAAAgAMAAwAAAD/////AgAJAAwAAAD+/wMAAgAJAA8AAAD+/wIAAgAJAA4AAAD+/wEAAgAJAA4AAAD+/wAAAgAJAA4AAAD+////AgAKAAwAAAD9/wMAAgAJAA8AAAD9/wIAAgAJAA4AAAD9/wEAAgAMAAwAAAD9/wAAAgAMAAwAAAD9////AgAKAAwAAAD8/wAAAgAIAA0AAAD8////AgAIAAwAAAD8/wEAAgAIAA0AAAD8/wIAAgAIAA0AAAD8/wMAAgAIAA8AAAD+/wQAAQABAAwAAAD9/wQAAQABAAwAAAD8/wQAAQABAAwAAAD///7/AgAAAA0AAAD//wQAAQABAAwAAAAAAP7/AQACAAoAAAAAAAQAAQABAAwAAAABAP7/AQABAAsAAAABAAQAAQABAAwAAAACAP7/AgAAAA0AAAACAAQAAQABAAwAAAADAP7/AQACAAoAAAADAAQAAQABAAwAAAAEAP//AQACAAoAAAAEAAAAAgADAA8AAAAEAP7/AQAAAAoAAAAEAAEAAQADAAsAAAAEAAIAAQADAAwAAAAEAAMAAQADAAwAAAAEAAQAAQADAA0AAAD7/wAAAQABAAoAAAD7////AQABAAoAAAD7/wEAAQABAAoAAAD7/wIAAQABAAoAAAD7/wMAAQABAAoAAAD7/wQAAQAAAAwAAAD7//7/AQABAA0AAAD8//7/AQADAAoAAAD9//7/AQADAAoAAAD+//7/AQABAAsAAAAFAAAAAQADAAwAAAAFAAEAAQADAA0AAAAFAP//AQAAAAoAAAD+//3/AQABAAoAAAD///3/AgAAAA0AAAAAAP3/AQADAAwAAAD+//z/AQABAAoAAAD///z/AgAAAA0AAAAAAPz/AQADAAsAAAD+//v/AQABAAoAAAD///v/AgABAAwAAAAAAPv/AgACAA8AAAD+//r/AQABAA0AAAD///r/AQADAAoAAAAAAPr/AQADAAoAAAABAPv/AgACAA8AAAABAPz/AQACAAwAAAABAPr/AQADAAoAAAACAPv/AgADAAwAAAACAPz/AgAAAA0AAAACAPr/AQADAAoAAAADAPv/AQADAAwAAAADAPz/AQADAAwAAAADAPr/AQAAAAoAAAADAP3/AQADAAwAAAACAP3/AgAAAA0AAAABAP3/AQABAAoAAAD0//j/AgAAAA8AAAD1//j/AQADAAwAAAD1//n/AQADAA0AAAD0//n/AQABAAwAAADz//n/AQAAAAwAAADz//j/AQABAAoAAADz//f/AQABAA0AAAD0//f/AQADAAoAAAD1//f/AQAAAAoAAAA=")
 tile_set = SubResource("TileSet_5dlhx")
 script = ExtResource("10_4oa76")
 
 [node name="TurnWait" type="Timer" parent="WorldTiles"]
+one_shot = true
 
 [node name="HiddenTiles" type="TileMapLayer" parent="WorldTiles"]
 tile_map_data = PackedByteArray("AAD4/wEAAAALAAgAAAD4/wAAAAALAAcAAAD4////AAALAAUAAAD3/wEAAAAJAAgAAAD3/wAAAAAJAAcAAAD3////AAAKAAUAAAD2/wEAAAAIAAgAAAD2/wAAAAAIAAYAAAD2////AAAIAAUAAAA=")
 tile_set = SubResource("TileSet_4xj60")
+
+[node name="Surground" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-184, -120)
+texture = ExtResource("11_jp838")
+region_enabled = true
+region_rect = Rect2(0, 128, 16, 16)
+
+[node name="Props" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-184, -120)
+texture = ExtResource("14_lh58u")
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)
+
+[node name="Coal" parent="." instance=ExtResource("14_0e8oq")]
+position = Vector2(-16, 0)
 
 [editable path="Player"]

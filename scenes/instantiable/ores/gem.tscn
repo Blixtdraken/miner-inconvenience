@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwkxm8x0kdqow"]
+
+[ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="1_ilntr"]
+[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="2_sk27a"]
+[ext_resource type="Texture2D" uid="uid://bjr1mb054jetv" path="res://assets/sprites/glint.png" id="3_wjxkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1fw4"]
+atlas = ExtResource("3_wjxkv")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi121"]
+atlas = ExtResource("3_wjxkv")
+region = Rect2(0, 9, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ikp2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1fw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi121")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmjhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1fw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi121")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wdrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1fw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi121")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_ilntr")
+ore_value = 100
+spawn_tile = Vector2i(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sk27a")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(-3, -2)
+sprite_frames = SubResource("SpriteFrames_ikp2m")
+autoplay = "default"
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(10, -2)
+sprite_frames = SubResource("SpriteFrames_tmjhu")
+autoplay = "default"
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(7, 8)
+sprite_frames = SubResource("SpriteFrames_8wdrl")
+autoplay = "default"
+centered = false

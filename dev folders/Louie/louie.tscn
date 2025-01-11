@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://c2rtjxnilwan7"]
+[gd_scene load_steps=60 format=4 uid="uid://c2rtjxnilwan7"]
 
 [ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="1_54pc5"]
 [ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="1_aanh2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cc7x8bgl5efod" path="res://assets/sprites/weapons_and_projectiles/weapons_animated.png" id="8_682g3"]
 [ext_resource type="Texture2D" uid="uid://ckqqrfu5fue76" path="res://assets/sprites/SGQ_Enemies/normal/16x16/goblin.png" id="9_xfbvo"]
 [ext_resource type="Texture2D" uid="uid://vb6pe5lgesfu" path="res://assets/sprites/characters/main/elf.png" id="10_10ppw"]
+[ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="11_f24k2"]
 [ext_resource type="Texture2D" uid="uid://di7clr3sx36o5" path="res://assets/sprites/SGQ_Enemies/normal/16x16/skeleton.png" id="11_urnbr"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="12_bheav"]
 [ext_resource type="Script" path="res://dev folders/Fei/player.gd" id="13_isg2f"]
@@ -1199,6 +1200,7 @@ texture = ExtResource("9_xfbvo")
 [node name="Elf" type="Sprite2D" parent="."]
 position = Vector2(-137, -8)
 texture = ExtResource("10_10ppw")
+script = ExtResource("11_f24k2")
 
 [node name="Skeleton" type="Sprite2D" parent="."]
 position = Vector2(27, -193)

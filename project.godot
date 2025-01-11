@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+GlobalScore="*res://global_score.gd"
+
 [display]
 
 window/size/viewport_width=540
