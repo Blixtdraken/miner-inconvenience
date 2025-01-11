@@ -68,7 +68,7 @@ func update_navmesh():
 			
 			if tile_data and tile_data.get_custom_data("wall") == true:
 				
-				tile_data.modulate = Color.SADDLE_BROWN
+				
 				astar.set_point_solid(coords, true)
 			else:
 				astar.set_point_solid(coords, false)

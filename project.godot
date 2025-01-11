@@ -13,6 +13,10 @@ config_version=5
 config/name="Miner Inconvenience"
 run/main_scene="res://dev folders/Fei/fei.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.192124, 0.42444, 4.81307e-07, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://assets/sprites/icon.svg"
 
 [display]
@@ -20,6 +24,7 @@ config/icon="res://assets/sprites/icon.svg"
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/size/resizable=false
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input]
@@ -67,4 +72,4 @@ textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.360784, 0.266667, 0.141176, 1)
+environment/defaults/default_clear_color=Color(0.345098, 0.266667, 0.133333, 1)
