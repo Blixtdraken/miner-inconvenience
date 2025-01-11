@@ -85,5 +85,6 @@ func tile_check(tile_pos:Vector2i)->TileInfo:
 	var tile_entity:TileEntity = get_entity_at_tile(tile_pos)
 	
 	return TileInfo.new(tile_pos, tile_entity, tile_data)
-	
-	
+
+func destroy_tile():
+	pass	

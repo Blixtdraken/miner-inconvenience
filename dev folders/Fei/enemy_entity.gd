@@ -16,12 +16,12 @@ func _ready() -> void:
 
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	
-	
-	if tile_info.tile_entity and tile_info.tile_entity is Player:
-		print("HIT THE HTING")
-		var player:Player = world_tiles.get_entity_at_tile(value)
-		player._on_damage(1)
-		sprite.play("attack")
+	if tile_info.tile_entity:
+		if tile_info.tile_entity is Player:
+			print("HIT THE HTING")
+			var player:Player = world_tiles.get_entity_at_tile(value)
+			player._on_damage(1)
+			sprite.play("attack")
 		return tile_pos
 	
 	if  tile_info.tile_type == TileInfo.TileType.FLOOR:
