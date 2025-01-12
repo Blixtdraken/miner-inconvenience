@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=32 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/player.tscn" id="2_i34i0"]
@@ -12,10 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c0o8nqd04ww8e" path="res://assets/sprites/grounds_and_walls/empty_tile.png" id="9_p3u2w"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="10_4oa76"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
-[ext_resource type="PackedScene" uid="uid://hu48ukskdqa5" path="res://scenes/instantiable/ores/coal.tscn" id="14_0e8oq"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
 [ext_resource type="PackedScene" uid="uid://cwkxm8x0kdqow" path="res://scenes/instantiable/ores/gem.tscn" id="15_isfcm"]
-[ext_resource type="PackedScene" uid="uid://d48rgxsugehh" path="res://scenes/instantiable/ores/metal.tscn" id="16_l1jjv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixtik"]
 atlas = ExtResource("4_6tinq")
@@ -1694,7 +1692,7 @@ script = ExtResource("1_gkh45")
 [node name="Player" parent="." instance=ExtResource("2_i34i0")]
 
 [node name="Sprite" parent="Player" index="0"]
-frame_progress = 0.586978
+frame_progress = 0.19027
 
 [node name="game_hud" parent="Player" instance=ExtResource("3_feewc")]
 
@@ -1708,7 +1706,7 @@ spawn_tile = Vector2i(-1, 2)
 top_level = true
 position = Vector2(24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.586978
+frame_progress = 0.777246
 offset = Vector2(0, -1)
 script = ExtResource("5_x2c50")
 
@@ -1735,7 +1733,7 @@ spawn_tile = Vector2i(1, 2)
 top_level = true
 position = Vector2(8, 44)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.586978
+frame_progress = 0.777246
 script = ExtResource("5_x2c50")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Slime2"]
@@ -1779,17 +1777,8 @@ texture = ExtResource("14_lh58u")
 region_enabled = true
 region_rect = Rect2(0, 80, 16, 16)
 
-[node name="Coal" parent="." instance=ExtResource("14_0e8oq")]
-position = Vector2(-16, 0)
-has_hidden_hole = true
-spawn_tile = Vector2i(-3, 1)
-
 [node name="Gem" parent="." instance=ExtResource("15_isfcm")]
 position = Vector2(-29, 27)
-spawn_tile = Vector2i(3, 1)
-
-[node name="Metal" parent="." instance=ExtResource("16_l1jjv")]
-position = Vector2(48, 14)
-spawn_tile = Vector2i(2, 3)
+spawn_tile = Vector2i(4, 0)
 
 [editable path="Player"]

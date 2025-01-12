@@ -137,19 +137,19 @@ region_enabled = true
 region_rect = Rect2(0, 80, 16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(-3, -2)
+position = Vector2(-6, -5)
 sprite_frames = SubResource("SpriteFrames_ikp2m")
 autoplay = "default"
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(10, -2)
+position = Vector2(7, -5)
 sprite_frames = SubResource("SpriteFrames_tmjhu")
 autoplay = "default"
 centered = false
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(7, 8)
+position = Vector2(4, 5)
 sprite_frames = SubResource("SpriteFrames_8wdrl")
 autoplay = "default"
 centered = false
