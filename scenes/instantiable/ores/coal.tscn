@@ -82,7 +82,6 @@ ore_value = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_77ev0")
-centered = false
 region_enabled = true
 region_rect = Rect2(16, 64, 16, 16)
 

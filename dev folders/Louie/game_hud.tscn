@@ -1,19 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=5 format=3 uid="uid://gqnayxf0c328"]
 
+[ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
 [ext_resource type="Texture2D" uid="uid://ior044m8sfkw" path="res://assets/sprites/game_ui/cut_ui/cut_thin_brick_top.png" id="1_wrlht"]
+[ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_6ns7m"]
+[ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_rohyt"]
 
 [node name="game_hud" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.75, 3.75)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,26 +18,112 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.75, 3.75)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 7
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-texture_repeat = 2
-layout_mode = 2
-texture = ExtResource("1_wrlht")
-stretch_mode = 1
-flip_v = true
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="TextureButton" type="TextureButton" parent="Control/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Hud" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(356, -54.6667)
+texture = ExtResource("1_n8mv4")
+
+[node name="Icons8x8" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(256.267, 12.5333)
+texture = ExtResource("2_6ns7m")
+
+[node name="Icons16x16" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(190.133, -2.66667)
+texture = ExtResource("3_rohyt")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 8.0
+offset_right = 8.0
+offset_bottom = 6.0
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="Control"]
 texture_repeat = 2
 layout_mode = 2
+offset_left = 12.0
+offset_right = 20.0
+offset_bottom = 6.0
 texture = ExtResource("1_wrlht")
 stretch_mode = 1
 flip_v = true
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 2
+offset_left = 24.0
+offset_right = 24.0
+offset_bottom = 6.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer"]
+layout_mode = 2
+border_width = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/ReferenceRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.345098, 0.266667, 0.133333, 1)

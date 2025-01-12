@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://c2rtjxnilwan7"]
+[gd_scene load_steps=70 format=4 uid="uid://c2rtjxnilwan7"]
 
 [ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="1_54pc5"]
 [ext_resource type="Texture2D" uid="uid://dy2b0e8o5fhce" path="res://assets/sprites/grounds_and_walls/grounds.png" id="1_aanh2"]
@@ -1006,6 +1006,78 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3vef"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c45fl"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcjqq"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj56a"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_l3vef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c45fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcjqq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aivwe"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmpes"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3es3s"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw7av"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r0ty"]
+atlas = ExtResource("10_10ppw")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxmmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aivwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmpes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3es3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw7av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r0ty")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugfy6"]
 size = Vector2(7, 7)
 
@@ -1191,7 +1263,21 @@ z_index = 1
 position = Vector2(-573, -155)
 sprite_frames = SubResource("SpriteFrames_bieor")
 frame = 1
-frame_progress = 0.933164
+frame_progress = 0.844148
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-552, -156)
+sprite_frames = SubResource("SpriteFrames_mj56a")
+frame = 2
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-528, -156)
+sprite_frames = SubResource("SpriteFrames_kxmmr")
+frame = 4
+frame_progress = 1.0
 
 [node name="Goblin" type="Sprite2D" parent="."]
 position = Vector2(-82, 13)

@@ -83,7 +83,6 @@ spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_y1qs2")
-centered = false
 region_enabled = true
 region_rect = Rect2(48, 64, 16, 16)
 
