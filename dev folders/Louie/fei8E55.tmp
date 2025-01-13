@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=32 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/tile entities/player.tscn" id="14_1nndt"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="14_1xnos"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
-[ext_resource type="PackedScene" uid="uid://cwkxm8x0kdqow" path="res://scenes/instantiable/ores/gem.tscn" id="15_b6hf2"]
 [ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="15_l2qxf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80nm4"]
@@ -1719,7 +1718,7 @@ texture = ExtResource("14_lh58u")
 region_enabled = true
 region_rect = Rect2(0, 80, 16, 16)
 
-[node name="CaveGenerator" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("15_l2qxf")
 
 [node name="Slime" type="Node2D" parent="."]
@@ -1732,7 +1731,7 @@ spawn_tile = Vector2i(-2, 2)
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_qfaji")
-frame_progress = 0.795988
+frame_progress = 0.938828
 offset = Vector2(0, -1)
 script = ExtResource("14_1xnos")
 
@@ -1746,17 +1745,11 @@ spawn_tile = Vector2i(0, 1)
 top_level = true
 position = Vector2(8, 24)
 sprite_frames = SubResource("SpriteFrames_qfaji")
-frame_progress = 0.795988
+frame_progress = 0.938828
 offset = Vector2(0, -1)
 script = ExtResource("14_1xnos")
 
 [node name="DamageTimer" type="Timer" parent="Slime2"]
 wait_time = 0.2
 
-[node name="Player" parent="." node_paths=PackedStringArray("world_tiles") instance=ExtResource("14_1nndt")]
-world_tiles = NodePath("../WorldTiles")
-spawn_tile = Vector2i(25, 13)
-
-[node name="Gem" parent="." instance=ExtResource("15_b6hf2")]
-has_hidden_hole = true
-spawn_tile = Vector2i(23, 13)
+[node name="Player" parent="." instance=ExtResource("14_1nndt")]

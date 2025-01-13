@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=8 format=3 uid="uid://gqnayxf0c328"]
 
 [ext_resource type="Script" path="res://dev folders/Louie/hud_manager.gd" id="1_mff0e"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
@@ -7,10 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_rohyt"]
 [ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="5_w8dr5"]
 
-[sub_resource type="Theme" id="Theme_aomls"]
+[sub_resource type="Theme" id="Theme_esvr1"]
 default_font = ExtResource("5_w8dr5")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4s02"]
 
 [node name="game_hud" type="CanvasLayer"]
 script = ExtResource("1_mff0e")
@@ -59,11 +57,9 @@ texture = ExtResource("2_6ns7m")
 position = Vector2(190.133, -2.66667)
 texture = ExtResource("3_rohyt")
 
-[node name="GoldText" type="TextEdit" parent="Control/MarginContainer"]
+[node name="GoldText" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
-theme = SubResource("Theme_aomls")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_a4s02")
-editable = false
+theme = SubResource("Theme_esvr1")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 layout_mode = 2
