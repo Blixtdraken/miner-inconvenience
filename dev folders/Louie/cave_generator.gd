@@ -5,9 +5,10 @@ extends Node2D
 
 var borders = Rect2(1, 1, 38, 21)
 
-@onready var tileMap = get_parent().get_node("WorldTiles")
+@onready var tileMap : WorldTiles = get_parent().get_node("WorldTiles")
 
 func _ready():
+	print(tileMap)
 	randomize()
 	generate_level()
 
@@ -27,6 +28,7 @@ func generate_level():
 	#exit.position = walker.get_end_room().position*32
 	#exit.connect("leaving_level", Callable(self, "reload_level"))
 
+	print(walker)
 	walker.queue_free()
 
 	
@@ -36,11 +38,12 @@ func generate_level():
 		var walked = []
 
 		walked.append(location)
-
-		tileMap.set_cells_terrain_connect(walked, 0, 0)
+		#tileMap.world_tile
+		tileMap.destroy_tile(location)
+		#tileMap.set_cells_terrain_connect(walked, 0, 1)
 		#print(tileMap)
 
-		#await get_tree().create_timer(0.001).timeout
+		await get_tree().create_timer(0.001).timeout
 
 func reload_level():
 	get_tree().reload_current_scene()
