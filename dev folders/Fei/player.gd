@@ -51,8 +51,11 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	return tile_pos
 
 func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
-	if tile_info.tile_type != TileInfo.TileType.BORDER and !tile_info.tile_entity and tile_info.tile_entity is not HoleEntity:	
-		world_tiles.trigger_turns()
+	if tile_info.tile_type != TileInfo.TileType.BORDER:	
+		if tile_info.tile_entity and tile_info.tile_entity is HoleEntity:
+			pass
+		else:
+			world_tiles.trigger_turns()
 	pass
 
 func _on_damage(damage:int):
