@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d48rgxsugehh"]
+[gd_scene load_steps=9 format=3 uid="uid://d48rgxsugehh"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="1_i0aeb"]
+[ext_resource type="PackedScene" uid="uid://cqfahpu7fxuje" path="res://scenes/instantiable/ores/ore_particles/metal_particles.tscn" id="2_748dm"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="2_y1qs2"]
 [ext_resource type="Texture2D" uid="uid://bjr1mb054jetv" path="res://assets/sprites/glint.png" id="3_qr3ex"]
 
@@ -79,6 +80,7 @@ animations = [{
 [node name="Metal" type="Node2D"]
 script = ExtResource("1_i0aeb")
 ore_value = 50
+ore_particles = ExtResource("2_748dm")
 spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

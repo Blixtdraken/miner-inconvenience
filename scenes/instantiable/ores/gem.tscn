@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwkxm8x0kdqow"]
+[gd_scene load_steps=10 format=3 uid="uid://cwkxm8x0kdqow"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/ore_entity.gd" id="1_ilntr"]
+[ext_resource type="PackedScene" uid="uid://onmymv76alir" path="res://scenes/instantiable/ores/ore_particles/gem_particles.tscn" id="2_b160o"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="2_sk27a"]
 [ext_resource type="Texture2D" uid="uid://bjr1mb054jetv" path="res://assets/sprites/glint.png" id="3_wjxkv"]
 
@@ -129,6 +130,7 @@ animations = [{
 [node name="Gem" type="Node2D"]
 script = ExtResource("1_ilntr")
 ore_value = 100
+ore_particles = ExtResource("2_b160o")
 spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
