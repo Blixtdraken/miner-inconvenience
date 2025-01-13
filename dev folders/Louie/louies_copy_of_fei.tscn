@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=4 uid="uid://jgerrropmp6c"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_0742p"]
-[ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/player.tscn" id="2_6najd"]
+[ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/tile entities/player.tscn" id="2_6najd"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_entity.gd" id="3_vx66b"]
 [ext_resource type="Texture2D" uid="uid://q85tas85kig1" path="res://assets/sprites/characters/enemies/slime.png" id="4_ko354"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="5_238gu"]

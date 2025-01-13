@@ -15,17 +15,29 @@ var current_finger_pos:Vector2 = Vector2.ZERO
 
 
 @onready
-var player_sprite:AnimatedSprite2D = get_node("Sprite")
+var player_sprite:PlayerSprite = get_node("Sprite")
 
+enum TileEventStatus {
+	IDLE,
+	WAITING,
+	RUNNING
+}
 
+var tile_event_status:TileEventStatus = TileEventStatus.IDLE
 
+var tile_event_entity:HoleEntity
 func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	
 	if tile_info.tile_entity:
-		if tile_info.tile_entity is TileEntity:
-			var enemy: TileEntity = world_tiles.get_entity_at_tile(value)
-			player_sprite.play("attack")
-			enemy._on_damage(1)
+		if tile_info.tile_entity is HoleEntity:
+			tile_event_entity = tile_info.tile_entity
+			tile_event_status = TileEventStatus.WAITING
+			global_position = world_tiles.local_to_map(value)
+			return value
+		var enemy: TileEntity = world_tiles.get_entity_at_tile(value)
+		player_sprite.play("attack")
+		enemy._on_damage(1)
+		
 		return tile_pos
 		pass
 	
@@ -39,7 +51,7 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	return tile_pos
 
 func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
-	if tile_info.tile_type != TileInfo.TileType.BORDER:	
+	if tile_info.tile_type != TileInfo.TileType.BORDER and !tile_info.tile_entity and tile_info.tile_entity is not HoleEntity:	
 		world_tiles.trigger_turns()
 	pass
 
@@ -52,7 +64,7 @@ func _on_start():
 	player_sprite.global_position = global_position
 	pass
 func _input(event):
-	if !world_tiles.waiting_for_turn:
+	if !world_tiles.waiting_for_turn or tile_event_status != TileEventStatus.IDLE:
 		return
 	if event is InputEventScreenTouch:
 		event = event as InputEventScreenTouch
@@ -113,5 +125,22 @@ func change_player_direction(dir:Vector2):
 	pass
 	
 		
+func _process(delta: float) -> void:
+	if tile_event_status == TileEventStatus.WAITING:
 		
-	
+		if player_sprite.global_position.distance_to(global_position) == 0:
+			tile_event_status = TileEventStatus.RUNNING
+			
+			if tile_event_entity is HoleEntity:
+				player_sprite.manual_control = true
+				player_sprite.animation_finished.connect(tile_event_finished)
+				player_sprite.play("fall")
+				
+			
+	pass
+		
+
+func tile_event_finished():
+	player_sprite.animation_finished.disconnect(tile_event_finished)
+	world_tiles.hide()
+	pass

@@ -1,6 +1,7 @@
 class_name TileInfo
 
 enum TileType {
+	NULL,
 	GROUND,
 	FLOOR,
 	HOLE,
@@ -16,6 +17,9 @@ func _init(tile_position:Vector2i, tile_entity:TileEntity, tile_data:TileData) -
 	self.tile_position = tile_position
 	self.tile_entity = tile_entity
 	self.tile_data = tile_data
-	var test = tile_data.get_custom_data("type")
-	tile_type = TileType.get(test.to_upper())
+	if tile_data:
+		var type = tile_data.get_custom_data("type")
+		tile_type = TileType.get(type.to_upper())
+	else:
+		tile_type = TileType.NULL
 	pass

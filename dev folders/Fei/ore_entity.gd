@@ -23,7 +23,7 @@ func _on_damage(damage:int):
 	world_tiles.tile_entities.erase(tile_pos)
 	
 	if has_hidden_hole:
-		var hole_scene:PackedScene = preload("res://scenes/instantiable/hole.tscn")
+		var hole_scene:PackedScene = preload("res://scenes/instantiable/tile entities/hole.tscn")
 		
 		var hole:HoleEntity = hole_scene.instantiate()
 		hole.world_tiles = world_tiles
