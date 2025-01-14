@@ -44,12 +44,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Hud" type="Sprite2D" parent="Control/MarginContainer"]
+visible = false
 position = Vector2(59, 222)
 texture = ExtResource("1_n8mv4")
 region_enabled = true
 region_rect = Rect2(3, 19, 11, 11)
 
 [node name="Hud2" type="Sprite2D" parent="Control/MarginContainer"]
+visible = false
 position = Vector2(59, 222)
 texture = ExtResource("1_n8mv4")
 region_enabled = true
@@ -75,6 +77,7 @@ offset_bottom = 6.0
 alignment = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
+visible = false
 texture_repeat = 2
 layout_mode = 2
 offset_left = 12.0
