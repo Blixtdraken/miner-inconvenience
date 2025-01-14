@@ -1,7 +1,7 @@
 class_name Player
 extends TileEntity
 
-var hp:int = 3
+#var hp:int = 3
 @export
 var distance_to_move:float = 180
 
@@ -16,6 +16,7 @@ var current_finger_pos:Vector2 = Vector2.ZERO
 
 @onready
 var player_sprite:PlayerSprite = get_node("Sprite")
+
 
 enum TileEventStatus {
 	IDLE,
@@ -59,7 +60,17 @@ func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
 	pass
 
 func _on_damage(damage:int):
+	GlobalHealth.player_hp -= 1
 	player_sprite.play("hurt")
+	if GlobalHealth.player_hp <= 0:
+		kill()
+	pass
+	
+func kill():
+	player_sprite.animation_finished.connect(tile_event_finished)
+	player_sprite.play("death")
+	GlobalHealth.player_hp = 3
+	GlobalScore.collected_ore = 0
 	pass
 
 func _on_start():
@@ -139,11 +150,14 @@ func _process(delta: float) -> void:
 				player_sprite.animation_finished.connect(tile_event_finished)
 				player_sprite.play("fall")
 				
+				
+				
 			
 	pass
 		
 
 func tile_event_finished():
 	player_sprite.animation_finished.disconnect(tile_event_finished)
-	world_tiles.hide()
+	#world_tiles.hide()
+	world_tiles.cave_generator.reload_level()
 	pass

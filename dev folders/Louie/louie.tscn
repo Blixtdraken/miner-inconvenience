@@ -1307,8 +1307,6 @@ region_rect = Rect2(0, 80, 16, 16)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("13_isg2f")
 distance_to_move = 25.0
-spawn_tile = null
-tile_pos = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_ugfy6")

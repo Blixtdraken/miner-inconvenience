@@ -33,8 +33,8 @@ var force_tile_pos:bool = true
 
 func _ready() -> void:
 	
-	if %WorldTiles:
-		world_tiles = %WorldTiles
+	##if %WorldTiles:
+	##	world_tiles = %WorldTiles
 	if world_tiles:
 		world_tiles.tile_entities[spawn_tile] = self
 		force_tile_pos = true

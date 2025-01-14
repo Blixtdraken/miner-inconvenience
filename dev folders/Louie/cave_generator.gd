@@ -1,3 +1,4 @@
+class_name CaveGenerator
 extends Node2D
 
 #const Player = preload("res://Player.tscn")
@@ -5,26 +6,35 @@ extends Node2D
 
 var borders = Rect2(1, 1, 38, 21)
 
-const Player = preload("res://scenes/instantiable/tile entities/player.tscn")
-@onready var _player : Player = get_parent().get_node("Player")
+const PlayerPrefab = preload("res://scenes/instantiable/tile entities/player.tscn")
+#@onready var _player : Player = get_parent().get_node("Player")
 @onready var tileMap : WorldTiles = get_parent().get_node("WorldTiles")
+
+var map : Array
+var player_spawn_pos : Vector2i
+var gen_finished : bool
+var hole_chosen : bool
+
+var instantiated_ore : OreEntity
 
 func _ready():
 	
+	
+	gen_finished=false
 	randomize()
 	generate_level()
+	
+	
 	#spawn_ore()
 	
-	_generate_ore(2, preload("res://scenes/instantiable/ores/gem.tscn"))
-	_generate_ore(5, preload("res://scenes/instantiable/ores/metal.tscn"))
-	_generate_ore(10, preload("res://scenes/instantiable/ores/coal.tscn"))
+	
 
 
 func generate_level():
 
 	var walker = Walker.new(Vector2(19, 11), borders)
 
-	var map = walker.walk(500)
+	map = walker.walk(500)
 
 
 ### DE HÄR 2 ÄR KVAR "just in case" från tutorialen. ta bort nån gång
@@ -53,9 +63,24 @@ func generate_level():
 		
 		tileMap.destroy_tile(location)
 		
-		_player.tile_pos = location
+		#_player.tile_pos = location
 		## IFALL DU VILL KUNNA SE DEN GENERERAS
+
+		
+		player_spawn_pos = location
+		#print(map.size(location)
 		#await get_tree().create_timer(0.0001).timeout
+		#if (map.size() -1) == location :
+		
+	
+	_spawn_player(player_spawn_pos)
+		
+
+		
+		
+	_generate_ore(2, preload("res://scenes/instantiable/ores/gem.tscn"))
+	_generate_ore(5, preload("res://scenes/instantiable/ores/metal.tscn"))
+	_generate_ore(10, preload("res://scenes/instantiable/ores/coal.tscn"))
 
 func reload_level():
 	get_tree().reload_current_scene()
@@ -65,39 +90,6 @@ func _input(event):
 		reload_level()
 		
 		
-func spawn_ore():
-	var ore_amount = RandomNumberGenerator.new().randi_range(111,202)
-	var metals_amount = RandomNumberGenerator.new().randi_range(2,5)
-	var coal_amount = RandomNumberGenerator.new().randi_range(5,10)
-	
-	## HÄR FIXA TACK TACK JAG SKA GÖRA DET (LOUIE)
-	
-	print(_int_to_array(0,ore_amount)+3)
-	print(_int_to_array(1,ore_amount)+5)
-	print(_int_to_array(2,ore_amount)+7)
-	#print(gem_amount)
-	var test =1
-	for amount in range(_int_to_array(0,ore_amount)+3):
-		var gem_scene : PackedScene = preload("res://scenes/instantiable/ores/gem.tscn")
-		
-		var ore_x = RandomNumberGenerator.new().randi_range(1,38)
-		var ore_y = RandomNumberGenerator.new().randi_range(1,21)
-		
-		var gem : OreEntity = gem_scene.instantiate()
-		gem.world_tiles = tileMap
-		gem.spawn_tile = Vector2i(ore_x, ore_y)
-		get_parent().add_child.call_deferred(gem)
-		test +=1
-	
-	
-	pass
-	
-	
-	
-func _int_to_array(index, temp):
-	return int(str(temp)[index])
-
-	#print(_int_to_array(1, 123)) # prints 2
 
 func _generate_ore(amount_modifier, type):
 	var ore_amount = RandomNumberGenerator.new().randi_range(0,3)
@@ -108,32 +100,47 @@ func _generate_ore(amount_modifier, type):
 		var ore_x = RandomNumberGenerator.new().randi_range(1,38)
 		var ore_y = RandomNumberGenerator.new().randi_range(1,21)
 		
+		var hole_chance = RandomNumberGenerator.new().randi_range(1,amount_modifier)
 		
-		#var tile_info:TileInfo = tileMap.tile_check(Vector2i(ore_x, ore_y))
 		
-		##while tile_info.tile_type != TileInfo.TileType.GROUND || tile_info.tile_type != TileInfo.TileType.NULL :
+		while tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity != null:
+			print(tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)
+			ore_x = RandomNumberGenerator.new().randi_range(1,38)
+			ore_y = RandomNumberGenerator.new().randi_range(1,21)
 			
-			##ore_x = RandomNumberGenerator.new().randi_range(1,38)
-			##ore_y = RandomNumberGenerator.new().randi_range(1,21)
 			
-			##tile_info = tileMap.tile_check(Vector2i(ore_x, ore_y))
+		
+		if tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity == null:
+			tileMap.destroy_tile(Vector2i(ore_x, ore_y))
+		
+			instantiated_ore = type.instantiate()
+			instantiated_ore.world_tiles = tileMap
+			instantiated_ore.spawn_tile = Vector2i(ore_x, ore_y)
 			
-			##return
+			print(tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)	
+			instantiated_ore._ready()
+			
+			if hole_chance == 1 && hole_chosen!=true:
+				instantiated_ore.has_hidden_hole=true
+			
+			
+			get_parent().add_child.call_deferred(instantiated_ore)
+			
+			
+				
 		
-		##if tile_info.tile_type == TileInfo.TileType.GROUND || tile_info.tile_type == TileInfo.TileType.NULL :
-		tileMap.destroy_tile(Vector2i(ore_x, ore_y))
-		
-		var instantiated_ore : OreEntity = type.instantiate()
-		instantiated_ore.world_tiles = tileMap
-		instantiated_ore.spawn_tile = Vector2i(ore_x, ore_y)
-		
-		
-		get_parent().add_child.call_deferred(instantiated_ore)
-		
-		
-		
-		
-
-		
-
+	if hole_chosen!=true && amount_modifier==10:
+		instantiated_ore.has_hidden_hole = true
 	return
+
+
+func _spawn_player(spawn_position):
+	
+	tileMap.destroy_tile(spawn_position)
+	var _player = PlayerPrefab.instantiate()
+	_player.world_tiles = tileMap
+	_player.spawn_tile = spawn_position
+	
+	get_parent().add_child.call_deferred(_player)
+	
+	pass

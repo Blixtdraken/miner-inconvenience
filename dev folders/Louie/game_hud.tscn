@@ -49,6 +49,12 @@ texture = ExtResource("1_n8mv4")
 region_enabled = true
 region_rect = Rect2(3, 19, 11, 11)
 
+[node name="Hud2" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(59, 222)
+texture = ExtResource("1_n8mv4")
+region_enabled = true
+region_rect = Rect2(3, 19, 11, 11)
+
 [node name="Icons8x8" type="Sprite2D" parent="Control/MarginContainer"]
 position = Vector2(256.267, 12.5333)
 texture = ExtResource("2_6ns7m")

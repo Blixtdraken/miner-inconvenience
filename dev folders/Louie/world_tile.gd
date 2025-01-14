@@ -11,6 +11,12 @@ var player_entity:TileEntity = null
 @onready
 var hidden_tiles:TileMapLayer = get_node("HiddenTiles")
 
+@export
+var enemy_spawner : EnemySpawner
+
+@export
+var cave_generator : CaveGenerator
+
 func get_tile_entiteties()->Array[TileEntity]:
 	var temp_array:Array[TileEntity] = []
 
@@ -24,7 +30,7 @@ func get_entity_at_tile(tile_value:Vector2i)->TileEntity:
 var turn_wait_timer:Timer = get_node("TurnWait")
 var waiting_for_turn:bool = true
 func call_turns():
-	
+	enemy_spawner._on_turn()
 	for entity in get_tile_entiteties():
 		entity._on_turn()
 		#print("Turned for " + str(entity))
