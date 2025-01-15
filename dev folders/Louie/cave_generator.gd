@@ -21,6 +21,7 @@ func _ready():
 	
 	
 	gen_finished=false
+	hole_chosen=false
 	randomize()
 	generate_level()
 	
@@ -120,8 +121,9 @@ func _generate_ore(amount_modifier, type):
 			print(tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)	
 			instantiated_ore._ready()
 			
-			if hole_chance == 1 && hole_chosen!=true:
-				instantiated_ore.has_hidden_hole=true
+			if hole_chance == 1 && hole_chosen != true:
+				instantiated_ore.has_hidden_hole = true
+				hole_chosen = true
 			
 			
 			get_parent().add_child.call_deferred(instantiated_ore)
@@ -129,8 +131,9 @@ func _generate_ore(amount_modifier, type):
 			
 				
 		
-	if hole_chosen!=true && amount_modifier==10:
+	if hole_chosen != true && amount_modifier == 10:
 		instantiated_ore.has_hidden_hole = true
+		hole_chosen = true
 	return
 
 

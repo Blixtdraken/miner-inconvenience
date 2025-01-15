@@ -42,15 +42,23 @@ func _spawn_enemies():
 	randomize()
 	## FIXA DET HÄR
 	#caveGen.map
-	var spawn_x = RandomNumberGenerator.new().randi_range(1,38)
-	var spawn_y = RandomNumberGenerator.new().randi_range(1,21)
+	#var spawn_x = RandomNumberGenerator.new().randi_range(1,38)
+	#var spawn_y = RandomNumberGenerator.new().randi_range(1,21)
 	
-	var rand_index:int = randi() % caveGen.map.size()
+	var spawnpos_ = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
 	
-	if caveGen.map[rand_index]:
+	while (worldTiles.tile_check(Vector2i(spawnpos_)).tile_type != TileInfo.TileType.FLOOR) || (worldTiles.tile_check(Vector2i(spawnpos_)).tile_entity != null):
+		spawnpos_ = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
+		print("test")
+	#tile_check(Vector2i(spawn_x, spawn_y)).tile_type == tile_check(tile_pos).TileType.GROUND
+		pass
+	
+	#var rand_index:int = randi() % caveGen.map.size()
+	
+	if (worldTiles.tile_check(Vector2i(spawnpos_)).tile_type == TileInfo.TileType.FLOOR) || (worldTiles.tile_check(Vector2i(spawnpos_)).tile_entity == null):
 		var slime_enemy = slime_prefab.instantiate()
 		slime_enemy.world_tiles = worldTiles
-		slime_enemy.spawn_tile = caveGen.map[rand_index]
+		slime_enemy.spawn_tile = spawnpos_
 	
 		get_parent().add_child.call_deferred(slime_enemy)
 		
