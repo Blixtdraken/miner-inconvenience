@@ -32,30 +32,20 @@ columns = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -16.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
 
 [node name="TextureButton" type="TextureButton" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-
-[node name="Hud" type="Sprite2D" parent="Control/MarginContainer"]
-visible = false
-position = Vector2(59, 222)
-texture = ExtResource("1_n8mv4")
-region_enabled = true
-region_rect = Rect2(3, 19, 11, 11)
-
-[node name="Hud2" type="Sprite2D" parent="Control/MarginContainer"]
-visible = false
-position = Vector2(59, 222)
-texture = ExtResource("1_n8mv4")
-region_enabled = true
-region_rect = Rect2(3, 19, 11, 11)
 
 [node name="Icons8x8" type="Sprite2D" parent="Control/MarginContainer"]
 position = Vector2(256.267, 12.5333)
@@ -68,6 +58,25 @@ texture = ExtResource("3_rohyt")
 [node name="GoldText" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
 theme = SubResource("Theme_esvr1")
+text = "gold"
+
+[node name="Hud" type="Sprite2D" parent="Control/MarginContainer/GoldText"]
+position = Vector2(-6, 8)
+texture = ExtResource("1_n8mv4")
+region_enabled = true
+region_rect = Rect2(3, 19, 11, 11)
+
+[node name="HealthText" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_esvr1")
+text = "health"
+horizontal_alignment = 2
+
+[node name="Hud2" type="Sprite2D" parent="Control/MarginContainer/HealthText"]
+position = Vector2(124, 8)
+texture = ExtResource("1_n8mv4")
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 layout_mode = 2

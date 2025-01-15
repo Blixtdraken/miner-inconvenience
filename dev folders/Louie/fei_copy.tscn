@@ -1601,6 +1601,7 @@ sources/0 = SubResource("TileSetAtlasSource_yvcyr")
 
 [node name="Fei" type="Node2D"]
 script = ExtResource("1_gkh45")
+debug_axis = false
 
 [node name="game_hud" parent="." instance=ExtResource("3_feewc")]
 
