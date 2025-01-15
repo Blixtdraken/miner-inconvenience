@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfr1iq4ikii7f"]
+
+[ext_resource type="Script" path="res://dev folders/Fei/cartoon_closing.gd" id="1_10ywo"]
+[ext_resource type="Shader" path="res://dev folders/Fei/cartoon_closing.gdshader" id="2_2h2nh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfuy2"]
+shader = ExtResource("2_2h2nh")
+shader_parameter/radius = 1.0
+shader_parameter/pixSize = 3.7
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_10ywo")
+
+[node name="CloseEffect" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CloseEffect"]
+material = SubResource("ShaderMaterial_nfuy2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
