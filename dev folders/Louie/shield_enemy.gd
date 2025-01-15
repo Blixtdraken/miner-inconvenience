@@ -1,4 +1,4 @@
-#class_name SlimeEnemy
+class_name SlimeEnemy
 extends EnemyEntity
 
 
