@@ -24,6 +24,8 @@ config/icon="res://assets/sprites/icon.svg"
 GlobalScore="*res://global_score.gd"
 DebugSettings="*res://dev folders/Fei/debug_settings.gd"
 GlobalHealth="*res://global_health.gd"
+GlobalSettings="*res://global_settings.gd"
+ClosingEffect="*res://scenes/instantiable/closing_effect.tscn"
 
 [display]
 

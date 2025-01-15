@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bhxkuj04ilaxn"]
+[gd_scene load_steps=22 format=4 uid="uid://bhxkuj04ilaxn"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_41dno"]
 [ext_resource type="PackedScene" uid="uid://ctsxc00b1xq4c" path="res://scenes/instantiable/tile entities/player.tscn" id="1_jois4"]
@@ -9,8 +9,6 @@
 [ext_resource type="TileSet" uid="uid://b44igaknx6wti" path="res://assets/other/main_tile_set.tres" id="7_v8my4"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="9_hk0si"]
 [ext_resource type="PackedScene" uid="uid://cwkxm8x0kdqow" path="res://scenes/instantiable/ores/gem.tscn" id="11_aqj07"]
-[ext_resource type="Shader" path="res://dev folders/Fei/cartoon_closing.gdshader" id="13_rwexy"]
-[ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="14_ungff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvcyr"]
 texture = ExtResource("9_hk0si")
@@ -548,11 +546,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfuy2"]
-shader = ExtResource("13_rwexy")
-shader_parameter/amount = 0.0
-shader_parameter/sprite_resulotion = Vector2(16, 16)
-
 [node name="Fei" type="Node2D"]
 script = ExtResource("1_41dno")
 debug_axis = false
@@ -567,7 +560,7 @@ tile_set = SubResource("TileSet_4xj60")
 world_tiles = NodePath("../WorldTiles")
 
 [node name="Sprite" parent="Player2" index="0"]
-frame_progress = 0.461564
+frame_progress = 0.514765
 
 [node name="Slime" type="Node2D" parent="." node_paths=PackedStringArray("world_tiles")]
 z_index = 10
@@ -580,7 +573,7 @@ spawn_tile = Vector2i(-2, 2)
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.636994
+frame_progress = 0.690191
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
@@ -595,7 +588,7 @@ spawn_tile = Vector2i(0, 1)
 top_level = true
 position = Vector2(8, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.636994
+frame_progress = 0.690191
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
@@ -618,14 +611,5 @@ position = Vector2(88, 8)
 has_hidden_hole = true
 world_tiles = NodePath("../WorldTiles")
 spawn_tile = Vector2i(5, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Icon" type="Sprite2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_nfuy2")
-position = Vector2(260, 465)
-scale = Vector2(100, 100)
-texture = ExtResource("14_ungff")
 
 [editable path="Player2"]
