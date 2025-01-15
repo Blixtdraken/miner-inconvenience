@@ -58,16 +58,21 @@ func _on_turn():
 		tile_pos,
 		world_tiles.player_entity.tile_pos
 		)
+	var dir:Vector2i
 	if path_points.size() > 2:
-		var dir:Vector2 = path_points[1] - tile_pos
-		dir = dir.normalized()
+		dir = path_points[1] - tile_pos
+		#dir = dir.normalized()
 		tile_pos += dir as Vector2i
 	elif path_points.size() > 1:
-		var dir:Vector2 = path_points[1] - tile_pos
-		dir = dir.normalized()
+		dir = path_points[1] - tile_pos
+		#dir = dir.normalized()
 		tile_pos += dir as Vector2i
 	#print(dir)
-	
+	print(dir)
+	if dir.x != 0:
+		
+		sprite.scale.x = dir.clampi(-1,1).x
+	pass
 	pass
 
 func _on_damage(damage:int):

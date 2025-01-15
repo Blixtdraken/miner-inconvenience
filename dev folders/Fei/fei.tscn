@@ -563,36 +563,39 @@ tile_map_data = PackedByteArray("AAD6/wEAAAALAAUAAAD5/wEAAAAIAAUAAAD5/wIAAAAIAAg
 enabled = false
 tile_set = SubResource("TileSet_4xj60")
 
-[node name="Player2" parent="." instance=ExtResource("1_jois4")]
+[node name="Player2" parent="." node_paths=PackedStringArray("world_tiles") instance=ExtResource("1_jois4")]
+world_tiles = NodePath("../WorldTiles")
 
 [node name="Sprite" parent="Player2" index="0"]
-frame_progress = 0.130416
+frame_progress = 0.233418
 
-[node name="Slime" type="Node2D" parent="."]
+[node name="Slime" type="Node2D" parent="." node_paths=PackedStringArray("world_tiles")]
 z_index = 10
 position = Vector2(-24, 24)
 script = ExtResource("6_qq6m5")
+world_tiles = NodePath("../WorldTiles")
 spawn_tile = Vector2i(-2, 2)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Slime"]
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.305845
+frame_progress = 0.408847
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
-[node name="Slime2" type="Node2D" parent="."]
+[node name="Slime2" type="Node2D" parent="." node_paths=PackedStringArray("world_tiles")]
 z_index = 10
 position = Vector2(8, 24)
 script = ExtResource("6_qq6m5")
+world_tiles = NodePath("../WorldTiles")
 spawn_tile = Vector2i(0, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Slime2"]
 top_level = true
 position = Vector2(8, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.305845
+frame_progress = 0.408847
 offset = Vector2(0, -1)
 script = ExtResource("4_17jor")
 
@@ -610,9 +613,10 @@ script = ExtResource("6_t45sl")
 wait_time = 0.1
 one_shot = true
 
-[node name="Gem" parent="." instance=ExtResource("11_aqj07")]
+[node name="Gem" parent="." node_paths=PackedStringArray("world_tiles") instance=ExtResource("11_aqj07")]
 position = Vector2(88, 8)
 has_hidden_hole = true
+world_tiles = NodePath("../WorldTiles")
 spawn_tile = Vector2i(5, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

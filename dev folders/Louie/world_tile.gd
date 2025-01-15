@@ -30,7 +30,8 @@ func get_entity_at_tile(tile_value:Vector2i)->TileEntity:
 var turn_wait_timer:Timer = get_node("TurnWait")
 var waiting_for_turn:bool = true
 func call_turns():
-	enemy_spawner._on_turn()
+	if enemy_spawner:
+		enemy_spawner._on_turn()
 	for entity in get_tile_entiteties():
 		entity._on_turn()
 		#print("Turned for " + str(entity))
