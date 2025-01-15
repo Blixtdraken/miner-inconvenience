@@ -107,4 +107,16 @@ func destroy_tile(tile_pos:Vector2i)->bool:
 	else:
 		return false
 	return false
+	
+func place_floor(tile_pos:Vector2i)->bool:
+	var tile_info:TileInfo = tile_check(tile_pos)
+	if tile_info.tile_type == TileInfo.TileType.GROUND || tile_info.tile_type == TileInfo.TileType.NULL :
+		
+		
+		set_cells_terrain_connect([tile_pos], 0, 1, false)
+		
+		return true
+	else:
+		return false
+	return false
 		
