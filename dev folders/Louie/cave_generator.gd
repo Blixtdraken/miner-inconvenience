@@ -68,13 +68,13 @@ func generate_level():
 		## IFALL DU VILL KUNNA SE DEN GENERERAS
 
 		
-		player_spawn_pos = location
+		
 		#print(map.size(location)
 		#await get_tree().create_timer(0.0001).timeout
 		#if (map.size() -1) == location :
 		
 	
-	_spawn_player(player_spawn_pos)
+	
 		
 
 		
@@ -82,6 +82,8 @@ func generate_level():
 	_generate_ore(2, preload("res://scenes/instantiable/ores/gem.tscn"))
 	_generate_ore(5, preload("res://scenes/instantiable/ores/metal.tscn"))
 	_generate_ore(10, preload("res://scenes/instantiable/ores/coal.tscn"))
+	
+	_spawn_player()
 
 func reload_level():
 	get_tree().reload_current_scene()
@@ -112,13 +114,15 @@ func _generate_ore(amount_modifier, type):
 			
 		
 		if tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity == null:
+			
+			print("ore spawn: ",tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)
 			tileMap.destroy_tile(Vector2i(ore_x, ore_y))
 		
 			instantiated_ore = type.instantiate()
 			instantiated_ore.world_tiles = tileMap
 			instantiated_ore.spawn_tile = Vector2i(ore_x, ore_y)
 			
-			print(tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)	
+			#print(tileMap.tile_check(Vector2i(ore_x, ore_y)).tile_entity)	
 			instantiated_ore._ready()
 			
 			if hole_chance == 1 && hole_chosen != true:
@@ -137,13 +141,22 @@ func _generate_ore(amount_modifier, type):
 	return
 
 
-func _spawn_player(spawn_position):
+func _spawn_player():
 	
-	tileMap.destroy_tile(spawn_position)
-	var _player = PlayerPrefab.instantiate()
-	_player.world_tiles = tileMap
-	_player.spawn_tile = spawn_position
 	
-	get_parent().add_child.call_deferred(_player)
+	player_spawn_pos = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
+	
+	while tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity != null:
+		
+		player_spawn_pos = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
+		pass
+	
+	
+	if tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity == null:
+		var _player = PlayerPrefab.instantiate()
+		_player.world_tiles = tileMap
+		_player.spawn_tile = player_spawn_pos
+	
+		get_parent().add_child.call_deferred(_player)
 	
 	pass

@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://c06gv5luul3s3"]
+
+[ext_resource type="Script" path="res://dev folders/Fei/enemy_entity.gd" id="1_pvd88"]
+[ext_resource type="Texture2D" uid="uid://dnm3dmh8lvesm" path="res://assets/sprites/characters/enemies/bat.png" id="2_y5ya0"]
+[ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="3_0tawk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bkld"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg15h"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myk33"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hxiv"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1pre"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1fdl"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihoeh"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo3na"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeiq4"]
+atlas = ExtResource("2_y5ya0")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3ghy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bkld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg15h")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myk33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hxiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1pre")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1fdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihoeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo3na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeiq4")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 24.0
+}]
+
+[node name="Bat" type="Node2D"]
+z_index = 10
+position = Vector2(-24, 24)
+script = ExtResource("1_pvd88")
+spawn_tile = Vector2i(-2, 2)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(-24, 24)
+sprite_frames = SubResource("SpriteFrames_o3ghy")
+animation = &"attack"
+offset = Vector2(0, -1)
+script = ExtResource("3_0tawk")

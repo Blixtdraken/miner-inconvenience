@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=12 format=3 uid="uid://gqnayxf0c328"]
 
 [ext_resource type="Script" path="res://dev folders/Louie/hud_manager.gd" id="1_mff0e"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
@@ -6,9 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_6ns7m"]
 [ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_rohyt"]
 [ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="5_w8dr5"]
+[ext_resource type="Shader" path="res://assets/shaders/palette_shader.gdshader" id="7_oxbx3"]
+[ext_resource type="Texture2D" uid="uid://b3s4vng3l6scj" path="res://assets/shaders/palette_1.png" id="8_f1q7p"]
+[ext_resource type="Texture2D" uid="uid://br5kddp5yts7c" path="res://assets/shaders/palette_1 (1).png" id="9_wy8i0"]
 
 [sub_resource type="Theme" id="Theme_esvr1"]
 default_font = ExtResource("5_w8dr5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6ovo"]
+shader = ExtResource("7_oxbx3")
+shader_parameter/pallette_white = Color(0.831373, 0.823529, 0.607843, 1)
+shader_parameter/pallette_light_grey = Color(0.415686, 0.545098, 0.643137, 1)
+shader_parameter/pallette_dark_grey = Color(0.286275, 0.447059, 0.521569, 1)
+shader_parameter/pallette_black = Color(0.345098, 0.266667, 0.133333, 1)
 
 [node name="game_hud" type="CanvasLayer"]
 script = ExtResource("1_mff0e")
@@ -158,3 +168,19 @@ offset_top = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.345098, 0.266667, 0.133333, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_l6ovo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Palette1" type="Sprite2D" parent="."]
+position = Vector2(878, 544)
+texture = ExtResource("8_f1q7p")
+
+[node name="Palette1(1)" type="Sprite2D" parent="."]
+position = Vector2(861, 545)
+texture = ExtResource("9_wy8i0")
