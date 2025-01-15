@@ -146,13 +146,13 @@ func _spawn_player():
 	
 	player_spawn_pos = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
 	
-	while tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity != null:
+	while (tileMap.tile_check(Vector2i(player_spawn_pos)).tile_type != TileInfo.TileType.FLOOR) || tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity != null:
 		
 		player_spawn_pos = Vector2i(RandomNumberGenerator.new().randi_range(1,38), RandomNumberGenerator.new().randi_range(1,21))
 		pass
 	
 	
-	if tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity == null:
+	if (tileMap.tile_check(Vector2i(player_spawn_pos)).tile_type == TileInfo.TileType.FLOOR) || (tileMap.tile_check(Vector2i(player_spawn_pos)).tile_entity == null):
 		var _player = PlayerPrefab.instantiate()
 		_player.world_tiles = tileMap
 		_player.spawn_tile = player_spawn_pos

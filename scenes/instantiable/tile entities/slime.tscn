@@ -1,20 +1,28 @@
-[gd_scene load_steps=14 format=3 uid="uid://ct4nu77sn5gob"]
+[gd_scene load_steps=16 format=3 uid="uid://ct4nu77sn5gob"]
 
-[ext_resource type="Script" path="res://dev folders/Fei/enemy_entity.gd" id="1_ft1e2"]
+[ext_resource type="Script" path="res://dev folders/Louie/slime_enemy.gd" id="1_fja2k"]
 [ext_resource type="Texture2D" uid="uid://q85tas85kig1" path="res://assets/sprites/characters/enemies/slime.png" id="2_cm8j1"]
 [ext_resource type="Script" path="res://dev folders/Fei/enemy_sprite.gd" id="3_j06nv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixtik"]
-atlas = ExtResource("2_cm8j1")
-region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlkfx"]
 atlas = ExtResource("2_cm8j1")
 region = Rect2(16, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixtik"]
+atlas = ExtResource("2_cm8j1")
+region = Rect2(32, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1flql"]
 atlas = ExtResource("2_cm8j1")
 region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agwjl"]
+atlas = ExtResource("2_cm8j1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0q0k"]
+atlas = ExtResource("2_cm8j1")
+region = Rect2(16, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7txb5"]
 atlas = ExtResource("2_cm8j1")
@@ -44,17 +52,31 @@ region = Rect2(48, 64, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixtik")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_jlkfx")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ixtik")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1flql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlkfx")
 }],
 "loop": false,
 "name": &"attack",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agwjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0q0k")
+}],
+"loop": true,
+"name": &"charging",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -91,13 +113,12 @@ animations = [{
 [node name="Slime" type="Node2D"]
 z_index = 10
 position = Vector2(-24, 24)
-script = ExtResource("1_ft1e2")
-spawn_tile = Vector2i(-2, 2)
+script = ExtResource("1_fja2k")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.216856
+frame_progress = 0.373028
 offset = Vector2(0, -1)
 script = ExtResource("3_j06nv")
