@@ -71,7 +71,8 @@ theme = SubResource("Theme_esvr1")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "gold"
-visible_ratio = -0.25
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Hud" type="Sprite2D" parent="Control/MarginContainer/GoldText"]
 position = Vector2(-6, 8)

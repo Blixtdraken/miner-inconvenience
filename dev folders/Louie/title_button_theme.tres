@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cu5xxv0w32xg8"]
+
+[ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="1_5t0p6"]
+
+[resource]
+default_font = ExtResource("1_5t0p6")
