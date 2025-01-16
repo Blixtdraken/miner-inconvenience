@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://bag0tu0804u4w"]
+
+[ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="1_52vqw"]
+[ext_resource type="Texture2D" uid="uid://vl0cayp2hem2" path="res://assets/sprites/game_ui/cut_ui/gameoverbox(1).png" id="2_48ho6"]
+
+[sub_resource type="Theme" id="Theme_ks57u"]
+default_font = ExtResource("1_52vqw")
+
+[sub_resource type="Theme" id="Theme_sw1ei"]
+default_font = ExtResource("1_52vqw")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_7unlq"]
+default_font = ExtResource("1_52vqw")
+default_font_size = 8
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_right = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.75, 3.75)
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 16
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_48ho6")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_ks57u")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 0
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "Floor Reached:"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "Gold Collected:"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "Enemies Killed:"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_sw1ei")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_7unlq")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "Total Score:"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = -1
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_7unlq")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 0
+text = "127836123"
+horizontal_alignment = 1

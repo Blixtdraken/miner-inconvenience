@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=16 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
 [ext_resource type="PackedScene" uid="uid://bfr1iq4ikii7f" path="res://scenes/instantiable/closing_effect.tscn" id="12_biype"]
+[ext_resource type="PackedScene" uid="uid://bag0tu0804u4w" path="res://game_over.tscn" id="13_c0tpg"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
 [ext_resource type="Script" path="res://dev folders/Louie/enemy_spawner.gd" id="15_gvcq0"]
 [ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="15_l2qxf"]
@@ -422,7 +423,11 @@ sources/0 = SubResource("TileSetAtlasSource_yvcyr")
 script = ExtResource("1_gkh45")
 debug_axis = false
 
+[node name="CanvasLayer" parent="." instance=ExtResource("12_biype")]
+
 [node name="game_hud" parent="." instance=ExtResource("3_feewc")]
+
+[node name="MarginContainer" parent="game_hud" instance=ExtResource("13_c0tpg")]
 
 [node name="WorldTiles" type="TileMapLayer" parent="." node_paths=PackedStringArray("enemy_spawner", "cave_generator")]
 unique_name_in_owner = true
@@ -472,7 +477,5 @@ autoplay = true
 
 [node name="ShaderManager" type="Node2D" parent="."]
 script = ExtResource("11_cu3tn")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("12_biype")]
 
 [connection signal="closing_finished" from="CanvasLayer" to="ShaderManager" method="_on_canvas_layer_closing_finished"]

@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_hxtf7")
-shader_parameter/palette_white = Color(0.796243, 0.796243, 0.796243, 1)
-shader_parameter/palette_light_grey = Color(0.533037, 0.533037, 0.533037, 1)
-shader_parameter/palette_dark_grey = Color(0.408329, 0.408329, 0.408329, 1)
-shader_parameter/palette_black = Color(0.187176, 0.187176, 0.187176, 1)
+shader_parameter/palette_white = Color(0.796078, 0.568627, 0.45098, 1)
+shader_parameter/palette_light_grey = Color(0.556863, 0.266667, 0.239216, 1)
+shader_parameter/palette_dark_grey = Color(0.317647, 0.0901961, 0.188235, 1)
+shader_parameter/palette_black = Color(0.196078, 0.0392157, 0.156863, 1)

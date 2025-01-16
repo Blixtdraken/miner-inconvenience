@@ -47,6 +47,11 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	elif tile_info.tile_type == TileInfo.TileType.GROUND:
 		print("Wowie")
 		world_tiles.destroy_tile(value)
+		
+		var instance = load("res://scenes/instantiable/ores/ore_particles/wall_particles.tscn").instantiate()
+		get_parent().add_child(instance)
+		instance.position = value
+		
 		return tile_pos
 		
 	return tile_pos
@@ -67,10 +72,17 @@ func _on_damage(damage:int):
 	pass
 	
 func kill():
+	player_sprite.manual_control = true
 	player_sprite.animation_finished.connect(tile_event_finished)
-	player_sprite.play("death")
+	
+	
+	print("YOU DIED. YOU GOT TO FLOOR ", GlobalScore.floor, " AND COLLECTED ", GlobalScore.collected_ore, " GOLD")
+	
 	GlobalHealth.player_hp = 3
 	GlobalScore.collected_ore = 0
+	GlobalScore.floor = 0
+	
+	player_sprite.play("death")
 	pass
 
 func _on_start():

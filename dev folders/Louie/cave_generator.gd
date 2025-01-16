@@ -36,22 +36,8 @@ func generate_level():
 	var walker = Walker.new(Vector2(19, 11), borders)
 
 	map = walker.walk(500)
-
-
-### DE HÄR 2 ÄR KVAR "just in case" från tutorialen. ta bort nån gång
-	#var player = Player.instantiate()
-	#getparentadd_child(player)
-	#player.position = map.front()*32
-	
-	#var exit = Exit.instantiate()
-	#add_child(exit)
-	#exit.position = walker.get_end_room().position*32
-	#exit.connect("leaving_level", Callable(self, "reload_level"))
-
 	
 	walker.queue_free()
-
-	
 
 	for location in map:
 
@@ -67,23 +53,14 @@ func generate_level():
 		#_player.tile_pos = location
 		## IFALL DU VILL KUNNA SE DEN GENERERAS
 
-		
-		
-		#print(map.size(location)
-		#await get_tree().create_timer(0.0001).timeout
-		#if (map.size() -1) == location :
-		
-	
-	
-		
 
-		
-		
 	_generate_ore(2, preload("res://scenes/instantiable/ores/gem.tscn"))
 	_generate_ore(5, preload("res://scenes/instantiable/ores/metal.tscn"))
 	_generate_ore(10, preload("res://scenes/instantiable/ores/coal.tscn"))
 	
 	_spawn_player()
+	
+	GlobalScore.floor+=1
 
 func reload_level():
 	get_tree().reload_current_scene()

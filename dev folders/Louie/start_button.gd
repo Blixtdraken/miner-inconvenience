@@ -6,3 +6,9 @@ func _ready():
 	var textureBitMap = BitMap.new()
 	textureBitMap.create_from_image_alpha(bitmapReference)
 	set_click_mask(textureBitMap)
+
+
+func _on_pressed() -> void:
+	
+	print("test")
+	pass # Replace with function body.

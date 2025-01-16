@@ -119,6 +119,6 @@ script = ExtResource("1_fja2k")
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_cyj0g")
-frame_progress = 0.878279
+frame_progress = 0.817747
 offset = Vector2(0, -1)
 script = ExtResource("3_j06nv")
