@@ -325,7 +325,7 @@ spawn_tile = Vector2i(1, 1)
 top_level = true
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_rcv6q")
-frame_progress = 0.845528
+frame_progress = 0.950969
 offset = Vector2(0, -4)
 script = ExtResource("3_cxrl4")
 

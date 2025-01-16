@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dsc47tmpdv0wd"]
+
+[ext_resource type="Shader" path="res://assets/shaders/palette_shader.gdshader" id="1_hxtf7"]
+
+[resource]
+shader = ExtResource("1_hxtf7")
+shader_parameter/palette_white = Color(0.956863, 0.752941, 0.584314, 1)
+shader_parameter/palette_light_grey = Color(0.403922, 0.572549, 0.537255, 1)
+shader_parameter/palette_dark_grey = Color(0.113725, 0.470588, 0.454902, 1)
+shader_parameter/palette_black = Color(0.027451, 0.117647, 0.133333, 1)
