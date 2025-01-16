@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=15 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
+[ext_resource type="PackedScene" uid="uid://bfr1iq4ikii7f" path="res://scenes/instantiable/closing_effect.tscn" id="12_biype"]
 [ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
 [ext_resource type="Script" path="res://dev folders/Louie/enemy_spawner.gd" id="15_gvcq0"]
 [ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="15_l2qxf"]
@@ -471,3 +472,7 @@ autoplay = true
 
 [node name="ShaderManager" type="Node2D" parent="."]
 script = ExtResource("11_cu3tn")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("12_biype")]
+
+[connection signal="closing_finished" from="CanvasLayer" to="ShaderManager" method="_on_canvas_layer_closing_finished"]

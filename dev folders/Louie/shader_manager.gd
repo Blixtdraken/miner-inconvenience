@@ -1,3 +1,4 @@
+class_name ShaderManager
 extends Node2D
 
 
@@ -14,7 +15,7 @@ func _ready():
 	
 	print(palette_material.get_shader_parameter("pallette_white"))
 	
-	_random_palette()
+	#_random_palette()
 
 	pass # Replace with function body.
 
@@ -26,7 +27,8 @@ func _process(delta):
 
 func _random_palette():
 	
-	GlobalSettings.cur_palette=random_palette
+	if random_palette != null:
+		GlobalSettings.cur_palette=random_palette
 	
 	random_palette = randi()%(GlobalSettings.palettes_white.size())
 	
@@ -49,6 +51,12 @@ func _random_palette():
 	palette_material.set_shader_parameter("palette_dark_grey", GlobalSettings.palettes_dark[random_palette])
 	palette_material.set_shader_parameter("palette_black", GlobalSettings.palettes_black[random_palette])
 	
-	#GlobalSettings.cur_palette = random_palette
+	GlobalSettings.cur_palette = random_palette
 	
 	print("current palette: ", random_palette)
+
+
+func _on_canvas_layer_closing_finished():
+	
+	_random_palette()
+	pass # Replace with function body.
