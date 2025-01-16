@@ -12,7 +12,7 @@ const bat_prefab = preload("res://scenes/instantiable/tile entities/bat.tscn")
 const spawner_object = preload("res://scenes/instantiable/tile entities/spawn_object.tscn")
 
 var spawn_time : int = 0
-var time_to_spawn : int = 5
+var time_to_spawn : int = 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +29,7 @@ func _process(delta):
 	
 
 func _on_turn():
+	print(spawn_time)
 	if spawn_time>= time_to_spawn:
 		_spawn_enemies()
 		spawn_time = 0
@@ -57,7 +58,9 @@ func _spawn_enemies():
 	#var rand_index:int = randi() % caveGen.map.size()
 	
 	if (worldTiles.tile_check(Vector2i(spawnpos_)).tile_type == TileInfo.TileType.FLOOR) && (worldTiles.tile_check(Vector2i(spawnpos_)).tile_entity == null):
-		var instance = spawner_object.instantiate()
+		var spawn_list = [bat_prefab, slime_prefab]
+		
+		var instance = spawn_list[randi()%(spawn_list.size())].instantiate()
 		instance.world_tiles = worldTiles
 		instance.spawn_tile = spawnpos_
 	
