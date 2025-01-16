@@ -9,6 +9,7 @@ extends Node2D
 
 const slime_prefab = preload("res://scenes/instantiable/tile entities/slime.tscn")
 const bat_prefab = preload("res://scenes/instantiable/tile entities/bat.tscn")
+const spawner_object = preload("res://scenes/instantiable/tile entities/spawn_object.tscn")
 
 var spawn_time : int = 0
 var time_to_spawn : int = 5
@@ -56,11 +57,11 @@ func _spawn_enemies():
 	#var rand_index:int = randi() % caveGen.map.size()
 	
 	if (worldTiles.tile_check(Vector2i(spawnpos_)).tile_type == TileInfo.TileType.FLOOR) && (worldTiles.tile_check(Vector2i(spawnpos_)).tile_entity == null):
-		var slime_enemy = bat_prefab.instantiate()
-		slime_enemy.world_tiles = worldTiles
-		slime_enemy.spawn_tile = spawnpos_
+		var instance = spawner_object.instantiate()
+		instance.world_tiles = worldTiles
+		instance.spawn_tile = spawnpos_
 	
-		get_parent().add_child.call_deferred(slime_enemy)
+		get_parent().add_child.call_deferred(instance)
 		
 
 	

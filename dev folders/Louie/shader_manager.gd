@@ -15,7 +15,7 @@ func _ready():
 	
 	print(palette_material.get_shader_parameter("pallette_white"))
 	
-	#_random_palette()
+	_random_palette()
 
 	pass # Replace with function body.
 

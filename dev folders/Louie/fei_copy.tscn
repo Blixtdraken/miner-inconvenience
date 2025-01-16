@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
+[ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
-[ext_resource type="TileSet" uid="uid://b44igaknx6wti" path="res://assets/other/main_tile_set.tres" id="3_joxcr"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="7_plexj"]
 [ext_resource type="Texture2D" uid="uid://ce3rt1dsfgcxx" path="res://assets/sprites/weapons_and_projectiles/shield.png" id="9_5w1o0"]
 [ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
@@ -426,7 +426,7 @@ debug_axis = false
 
 [node name="WorldTiles" type="TileMapLayer" parent="." node_paths=PackedStringArray("enemy_spawner", "cave_generator")]
 unique_name_in_owner = true
-tile_set = ExtResource("3_joxcr")
+tile_set = ExtResource("3_f8wic")
 script = ExtResource("7_plexj")
 enemy_spawner = NodePath("../EnemySpawner")
 cave_generator = NodePath("../CaveGenerator")
