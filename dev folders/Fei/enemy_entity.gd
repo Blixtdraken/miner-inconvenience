@@ -6,6 +6,7 @@ var hp:int = 1
 @onready
 var sprite:AnimatedSprite2D = get_node("Sprite")
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_start() -> void:
 	sprite.setup()
@@ -77,6 +78,7 @@ func _on_turn():
 
 func _on_damage(damage:int):
 	sprite.play("hurt")
+	
 	hp -= damage
 	if hp <= 0:
 		kill()

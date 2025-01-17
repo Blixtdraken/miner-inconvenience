@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyrv7hvj7cqhx"]
+
+[ext_resource type="Material" uid="uid://dsc47tmpdv0wd" path="res://dev folders/Louie/palette_material.tres" id="1_vbkuc"]
+
+[node name="PaletteShader" type="ColorRect"]
+z_index = 5
+material = ExtResource("1_vbkuc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -13,9 +13,17 @@ var waiting_on_release:bool = false
 
 var current_finger_pos:Vector2 = Vector2.ZERO
 
+## SOUND EFFECTS
+@export var dig_sound : AudioStreamPlayer
+@export var dmg_sound : AudioStreamPlayer
+@export var move_sound : AudioStreamPlayer
+
+
 
 @onready
 var player_sprite:PlayerSprite = get_node("Sprite")
+
+@onready var game_over_ui : Control = get_parent().get_node("game_hud/GameOverUI")
 
 
 enum TileEventStatus {
@@ -38,19 +46,24 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		var enemy: TileEntity = world_tiles.get_entity_at_tile(value)
 		player_sprite.play("attack")
 		enemy._on_damage(1)
-		
+		if tile_info.tile_entity is OreEntity:
+			dig_sound.play(0)
+		if tile_info.tile_entity is EnemyEntity:
+			dmg_sound.play(0)
 		return tile_pos
 		pass
 	
 	if tile_info.tile_type == TileInfo.TileType.FLOOR:
+		move_sound.play(0)
 		return value
 	elif tile_info.tile_type == TileInfo.TileType.GROUND:
 		print("Wowie")
 		world_tiles.destroy_tile(value)
-		
+		dig_sound.play(0)
 		var instance = load("res://scenes/instantiable/ores/ore_particles/wall_particles.tscn").instantiate()
 		get_parent().add_child(instance)
-		instance.position = value
+		instance.global_position = world_tiles.map_to_local(value)
+
 		
 		return tile_pos
 		
@@ -58,6 +71,7 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 
 func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
 	if tile_info.tile_type != TileInfo.TileType.BORDER:	
+		
 		if tile_info.tile_entity and tile_info.tile_entity is HoleEntity:
 			pass
 		else:
@@ -76,11 +90,13 @@ func kill():
 	player_sprite.animation_finished.connect(tile_event_finished)
 	
 	
+	
 	print("YOU DIED. YOU GOT TO FLOOR ", GlobalScore.floor, " AND COLLECTED ", GlobalScore.collected_ore, " GOLD")
 	
-	GlobalHealth.player_hp = 3
-	GlobalScore.collected_ore = 0
-	GlobalScore.floor = 0
+	#GlobalHealth.player_hp = 3
+	#GlobalScore.collected_ore = 0
+	#GlobalScore.floor = 0
+	#GlobalScore.amount_killed = 0
 	
 	player_sprite.play("death")
 	pass
@@ -171,5 +187,8 @@ func _process(delta: float) -> void:
 func tile_event_finished():
 	player_sprite.animation_finished.disconnect(tile_event_finished)
 	#world_tiles.hide()
-	world_tiles.cave_generator.reload_level()
+	if GlobalHealth.player_hp <= 0:
+		game_over_ui._game_over()
+	else:
+		world_tiles.cave_generator.reload_level()
 	pass

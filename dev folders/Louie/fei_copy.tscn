@@ -1,16 +1,14 @@
-[gd_scene load_steps=16 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=14 format=3 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="7_plexj"]
-[ext_resource type="Texture2D" uid="uid://ce3rt1dsfgcxx" path="res://assets/sprites/weapons_and_projectiles/shield.png" id="9_5w1o0"]
 [ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
 [ext_resource type="PackedScene" uid="uid://bfr1iq4ikii7f" path="res://scenes/instantiable/closing_effect.tscn" id="12_biype"]
 [ext_resource type="PackedScene" uid="uid://bag0tu0804u4w" path="res://game_over.tscn" id="13_c0tpg"]
-[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="14_lh58u"]
 [ext_resource type="Script" path="res://dev folders/Louie/enemy_spawner.gd" id="15_gvcq0"]
 [ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="15_l2qxf"]
 
@@ -427,7 +425,8 @@ debug_axis = false
 
 [node name="game_hud" parent="." instance=ExtResource("3_feewc")]
 
-[node name="MarginContainer" parent="game_hud" instance=ExtResource("13_c0tpg")]
+[node name="GameOverUI" parent="game_hud" node_paths=PackedStringArray("caveGen") instance=ExtResource("13_c0tpg")]
+caveGen = NodePath("../../CaveGenerator")
 
 [node name="WorldTiles" type="TileMapLayer" parent="." node_paths=PackedStringArray("enemy_spawner", "cave_generator")]
 unique_name_in_owner = true
@@ -441,22 +440,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="HiddenTiles" type="TileMapLayer" parent="WorldTiles"]
-tile_map_data = PackedByteArray("AAD4/wEAAAALAAgAAAD4/wAAAAALAAcAAAD4////AAALAAUAAAD3/wEAAAAJAAgAAAD3/wAAAAAJAAcAAAD3////AAAKAAUAAAD2/wEAAAAIAAgAAAD2/wAAAAAIAAYAAAD2////AAAIAAUAAAA=")
 tile_set = SubResource("TileSet_4xj60")
-
-[node name="Surground" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-184, -120)
-texture = ExtResource("11_jp838")
-region_enabled = true
-region_rect = Rect2(0, 128, 16, 16)
-
-[node name="Props" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-184, -120)
-texture = ExtResource("14_lh58u")
-region_enabled = true
-region_rect = Rect2(0, 80, 16, 16)
 
 [node name="CaveGenerator" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -466,10 +450,6 @@ script = ExtResource("15_l2qxf")
 script = ExtResource("15_gvcq0")
 worldTiles = NodePath("../WorldTiles")
 caveGen = NodePath("../CaveGenerator")
-
-[node name="Shield" type="Sprite2D" parent="."]
-position = Vector2(-52, 25)
-texture = ExtResource("9_5w1o0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_66ro7")

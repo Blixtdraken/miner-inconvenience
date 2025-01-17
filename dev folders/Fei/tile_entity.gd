@@ -60,5 +60,6 @@ func _on_damage(damage:int):
 
 func kill():
 	world_tiles.tile_entities.erase(tile_pos)
+	GlobalScore.amount_killed+=1
 	queue_free()
 	pass

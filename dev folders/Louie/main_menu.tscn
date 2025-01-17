@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsijuwrrww3gm"]
+[gd_scene load_steps=15 format=3 uid="uid://bsijuwrrww3gm"]
 
+[ext_resource type="Script" path="res://dev folders/Louie/main_menu.gd" id="1_5mip5"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="2_hwshg"]
 [ext_resource type="Texture2D" uid="uid://cus732yml4hkx" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/start_button_pressed.png" id="2_woos6"]
 [ext_resource type="Texture2D" uid="uid://c8qo5a0qau58y" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/start_button.png" id="2_yneb3"]
@@ -12,68 +13,84 @@
 [ext_resource type="Texture2D" uid="uid://dn62cmkpo6yrb" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/help_button_pressed.png" id="8_21wr5"]
 [ext_resource type="Texture2D" uid="uid://dw5sll4x5xho8" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/credits_button_pressed.png" id="8_rxfrs"]
 [ext_resource type="Texture2D" uid="uid://6k51t7jqwvld" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/exit_button.png" id="9_kk1u6"]
+[ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="14_7ys3h"]
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = 7.0
-offset_right = 45.0
-offset_bottom = -725.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3.75, 3.75)
+script = ExtResource("1_5mip5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 256.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_yneb3")
 texture_pressed = ExtResource("2_woos6")
 stretch_mode = 3
 
-[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_0uy37")
 texture_pressed = ExtResource("4_yfiij")
 stretch_mode = 3
 
-[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_dd3nl")
 texture_pressed = ExtResource("8_rxfrs")
 stretch_mode = 3
 
-[node name="HelpButton" type="TextureButton" parent="VBoxContainer"]
+[node name="HelpButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_dfiwo")
 texture_pressed = ExtResource("8_21wr5")
 stretch_mode = 3
 
-[node name="Exit" type="TextureButton" parent="VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("9_kk1u6")
 texture_pressed = ExtResource("3_mb7w8")
 stretch_mode = 3
 
-[node name="Hud" type="Sprite2D" parent="VBoxContainer"]
+[node name="Hud" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
 position = Vector2(-452, 45)
 texture = ExtResource("2_hwshg")
 
-[node name="UiElements" type="Sprite2D" parent="VBoxContainer"]
+[node name="UiElements" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
 position = Vector2(-676, 171)
 texture = ExtResource("3_sklh6")
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="PaletteShader" parent="." instance=ExtResource("14_7ys3h")]
+layout_mode = 1
+offset_left = -118.0
+offset_top = -81.0
+offset_right = 117.0
+offset_bottom = -623.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

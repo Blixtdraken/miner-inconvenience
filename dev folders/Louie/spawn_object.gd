@@ -24,7 +24,7 @@ func _on_turn():
 	var spawn_enemy = enemy_list[randi()%(enemy_list.size())].instantiate()
 	
 	spawn_enemy.world_tiles = worldTiles
-	spawn_enemy.spawn_tile = self.position
+	spawn_enemy.spawn_tile = worldTiles.map_to_local(self.position)
 	
 	get_parent().add_child.call_deferred(spawn_enemy)
 	
