@@ -318,20 +318,21 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("dig_sound", "dmg_sound", "move_sound")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("dig_sound", "dmg_sound", "move_sound", "_camera")]
 position = Vector2(8, 8)
 script = ExtResource("1_lo43p")
 distance_to_move = 50.0
 dig_sound = NodePath("Dig")
 dmg_sound = NodePath("Damage")
 move_sound = NodePath("Move")
+_camera = NodePath("PlayerCamera")
 spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 top_level = true
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_rcv6q")
-frame_progress = 0.825551
+frame_progress = 0.547996
 offset = Vector2(0, -4)
 script = ExtResource("3_cxrl4")
 
