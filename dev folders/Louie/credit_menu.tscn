@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://canyej8qkwpxv"]
+
+[ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="4_usdvh"]
+[ext_resource type="Texture2D" uid="uid://c4i60srgflmp6" path="res://assets/Credits.png" id="5_2qgqr"]
+[ext_resource type="Texture2D" uid="uid://c20bq3bc6luvs" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button.png" id="6_x1rva"]
+[ext_resource type="Texture2D" uid="uid://cmpdi7ou5h803" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button_pressed.png" id="7_nx23g"]
+[ext_resource type="Script" path="res://dev folders/Louie/back_button.gd" id="8_ckanb"]
+
+[node name="HelpMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.75, 3.75)
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -68.8
+offset_top = -4.0
+offset_right = 84.2
+offset_bottom = 374.0
+mouse_filter = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="PaletteShader" parent="." instance=ExtResource("4_usdvh")]
+layout_mode = 1
+offset_left = -516.0
+offset_top = -789.0
+offset_right = 515.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -72.0
+offset_top = 236.0
+offset_right = 72.0
+offset_bottom = 254.0
+texture_normal = ExtResource("6_x1rva")
+texture_pressed = ExtResource("7_nx23g")
+stretch_mode = 3
+script = ExtResource("8_ckanb")
+
+[node name="Credits" type="Sprite2D" parent="."]
+position = Vector2(0, 108.8)
+texture = ExtResource("5_2qgqr")
+
+[connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_pressed"]

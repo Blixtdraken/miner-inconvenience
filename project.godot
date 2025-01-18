@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Miner Inconvenience"
-run/main_scene="res://dev folders/Louie/fei_copy.tscn"
+run/main_scene="res://dev folders/Louie/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.192124, 0.42444, 4.81307e-07, 1)
 boot_splash/show_image=false

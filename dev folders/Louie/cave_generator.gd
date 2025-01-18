@@ -10,6 +10,8 @@ const PlayerPrefab = preload("res://scenes/instantiable/tile entities/player.tsc
 #@onready var _player : Player = get_parent().get_node("Player")
 @onready var tileMap : WorldTiles = get_parent().get_node("WorldTiles")
 
+@export var land_sound : AudioStreamPlayer
+
 var map : Array
 var player_spawn_pos : Vector2i
 var gen_finished : bool
@@ -59,6 +61,7 @@ func generate_level():
 	_generate_ore(10, preload("res://scenes/instantiable/ores/coal.tscn"))
 	
 	_spawn_player()
+	land_sound.play(0)
 	
 	GlobalScore.floor+=1
 

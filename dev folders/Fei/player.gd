@@ -17,9 +17,17 @@ var current_finger_pos:Vector2 = Vector2.ZERO
 @export var dig_sound : AudioStreamPlayer
 @export var dmg_sound : AudioStreamPlayer
 @export var move_sound : AudioStreamPlayer
+@export var fall_sound : AudioStreamPlayer
+@export var ore_sound : AudioStreamPlayer
+@export var hurt_sound : AudioStreamPlayer
+
+
+
+
 
 @export var _camera : Camera2D
 
+@export var tool : AnimatedSprite2D
 
 
 @onready
@@ -48,9 +56,11 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		var enemy: TileEntity = world_tiles.get_entity_at_tile(value)
 		player_sprite.play("attack")
 		enemy._on_damage(1)
+		tool.play("pickaxe")
 		if tile_info.tile_entity is OreEntity:
 			_camera._screen_shake(3)
-			dig_sound.play(0)
+			ore_sound.play(0)
+			#dig_sound.play(0)
 		if tile_info.tile_entity is EnemyEntity:
 			_camera._screen_shake(1)
 			dmg_sound.play(0)
@@ -65,7 +75,7 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		world_tiles.destroy_tile(value)
 		
 		_camera._screen_shake(3)
-		
+		tool.play("pickaxe")
 		dig_sound.play(0)
 		var instance = load("res://scenes/instantiable/ores/ore_particles/wall_particles.tscn").instantiate()
 		get_parent().add_child(instance)
@@ -88,6 +98,8 @@ func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
 func _on_damage(damage:int):
 	GlobalHealth.player_hp -= 1
 	player_sprite.play("hurt")
+	hurt_sound.play(0)
+	
 	_camera._screen_shake(5)
 	if GlobalHealth.player_hp <= 0:
 		kill()
@@ -185,6 +197,8 @@ func _process(delta: float) -> void:
 				player_sprite.manual_control = true
 				player_sprite.animation_finished.connect(tile_event_finished)
 				player_sprite.play("fall")
+				fall_sound.play(1)
+				
 				
 				
 				

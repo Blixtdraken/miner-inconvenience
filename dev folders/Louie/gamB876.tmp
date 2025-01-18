@@ -1,0 +1,254 @@
+[gd_scene load_steps=17 format=3 uid="uid://gqnayxf0c328"]
+
+[ext_resource type="Script" path="res://dev folders/Louie/hud_manager.gd" id="1_mff0e"]
+[ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
+[ext_resource type="Texture2D" uid="uid://ior044m8sfkw" path="res://assets/sprites/game_ui/cut_ui/cut_thin_brick_top.png" id="1_wrlht"]
+[ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_6ns7m"]
+[ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_rohyt"]
+[ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="5_w8dr5"]
+[ext_resource type="Texture2D" uid="uid://bq47olo8v170q" path="res://assets/sprites/game_ui/cut_ui/Buttons-2.png.png" id="6_acyuc"]
+[ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="7_2yfwm"]
+[ext_resource type="Texture2D" uid="uid://cg61sngax07l4" path="res://assets/sprites/game_ui/cut_ui/Buttons-4.png.png" id="7_qxgqd"]
+[ext_resource type="Texture2D" uid="uid://b3s4vng3l6scj" path="res://assets/shaders/palette_1.png" id="8_f1q7p"]
+[ext_resource type="Texture2D" uid="uid://v7b3ifijy8gd" path="res://assets/sprites/game_ui/cut_ui/Buttons-1.png.png" id="8_qyx3x"]
+[ext_resource type="Texture2D" uid="uid://c3skcurfnuy6o" path="res://assets/sprites/game_ui/cut_ui/Buttons-3.png.png" id="9_8dguw"]
+[ext_resource type="Texture2D" uid="uid://br5kddp5yts7c" path="res://assets/shaders/palette_1 (1).png" id="9_wy8i0"]
+[ext_resource type="Texture2D" uid="uid://dybm451ptw74m" path="res://assets/shaders/palette_new.png" id="10_2qjpb"]
+[ext_resource type="Texture2D" uid="uid://dprt1wryxtlah" path="res://assets/sprites/game_ui/Buttons.png" id="11_tgrnf"]
+
+[sub_resource type="Theme" id="Theme_esvr1"]
+default_font = ExtResource("5_w8dr5")
+default_font_size = 8
+
+[node name="game_hud" type="CanvasLayer"]
+script = ExtResource("1_mff0e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -396.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.75, 3.75)
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="TextureButton" type="TextureButton" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Icons8x8" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(256.267, 12.5333)
+texture = ExtResource("2_6ns7m")
+
+[node name="Icons16x16" type="Sprite2D" parent="Control/MarginContainer"]
+position = Vector2(190.133, -2.66667)
+texture = ExtResource("3_rohyt")
+
+[node name="GoldText" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_esvr1")
+text = "gold"
+
+[node name="Hud" type="Sprite2D" parent="Control/MarginContainer/GoldText"]
+position = Vector2(-6, 8)
+texture = ExtResource("1_n8mv4")
+region_enabled = true
+region_rect = Rect2(3, 19, 11, 11)
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 8.0
+offset_right = 8.0
+offset_bottom = 6.0
+alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+visible = false
+texture_repeat = 2
+layout_mode = 2
+offset_left = 12.0
+offset_right = 20.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+flip_v = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 2
+offset_left = 24.0
+offset_right = 24.0
+offset_bottom = 6.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Control/VBoxContainer"]
+texture_repeat = 2
+layout_mode = 2
+texture = ExtResource("1_wrlht")
+stretch_mode = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+border_width = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/ReferenceRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.345098, 0.266667, 0.133333, 1)
+
+[node name="LeftButton" type="TextureButton" parent="Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 48.0
+offset_top = 204.0
+offset_right = 64.0
+offset_bottom = 220.0
+texture_normal = ExtResource("6_acyuc")
+texture_pressed = ExtResource("6_acyuc")
+stretch_mode = 3
+
+[node name="RightButton" type="TextureButton" parent="Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 80.0
+offset_top = 204.0
+offset_right = 96.0
+offset_bottom = 220.0
+texture_normal = ExtResource("9_8dguw")
+texture_pressed = ExtResource("9_8dguw")
+stretch_mode = 3
+
+[node name="UpButton" type="TextureButton" parent="Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 64.0
+offset_top = 188.0
+offset_right = 80.0
+offset_bottom = 204.0
+texture_normal = ExtResource("7_qxgqd")
+texture_pressed = ExtResource("7_qxgqd")
+stretch_mode = 3
+
+[node name="DownButton" type="TextureButton" parent="Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 64.0
+offset_top = 220.0
+offset_right = 80.0
+offset_bottom = 236.0
+texture_normal = ExtResource("8_qyx3x")
+texture_pressed = ExtResource("8_qyx3x")
+stretch_mode = 3
+
+[node name="Hud2" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(135, 23)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="Buttons" type="Sprite2D" parent="Control"]
+position = Vector2(100, 18.667)
+texture = ExtResource("11_tgrnf")
+centered = false
+region_enabled = true
+region_rect = Rect2(79, 6, 43, 21)
+
+[node name="HealthText" type="Label" parent="Control/Buttons"]
+offset_left = -116.267
+offset_top = -7.2
+offset_right = 3.73333
+offset_bottom = 8.8
+theme = SubResource("Theme_esvr1")
+text = "3"
+horizontal_alignment = 2
+
+[node name="PaletteShader" parent="." instance=ExtResource("7_2yfwm")]
+unique_name_in_owner = true
+
+[node name="Palette1" type="Sprite2D" parent="."]
+position = Vector2(878, 544)
+texture = ExtResource("8_f1q7p")
+
+[node name="Palette1(1)" type="Sprite2D" parent="."]
+position = Vector2(861, 545)
+texture = ExtResource("9_wy8i0")
+
+[node name="PaletteNew" type="Sprite2D" parent="."]
+position = Vector2(869, 545)
+texture = ExtResource("10_2qjpb")
+
+[connection signal="pressed" from="Control/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Control/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Control/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="Control/DownButton" to="." method="_on_down_button_pressed"]

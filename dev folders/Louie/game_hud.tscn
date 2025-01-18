@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=20 format=3 uid="uid://gqnayxf0c328"]
 
 [ext_resource type="Script" path="res://dev folders/Louie/hud_manager.gd" id="1_mff0e"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
@@ -6,16 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://ce7a8rywf0gvt" path="res://assets/sprites/game_ui/icons_8x8.png" id="2_6ns7m"]
 [ext_resource type="Texture2D" uid="uid://i0ejo8wtor7a" path="res://assets/sprites/game_ui/icons_16x16.png" id="3_rohyt"]
 [ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="5_w8dr5"]
+[ext_resource type="Texture2D" uid="uid://bq47olo8v170q" path="res://assets/sprites/game_ui/cut_ui/Buttons-2.png.png" id="6_acyuc"]
 [ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="7_2yfwm"]
+[ext_resource type="Texture2D" uid="uid://cg61sngax07l4" path="res://assets/sprites/game_ui/cut_ui/Buttons-4.png.png" id="7_qxgqd"]
 [ext_resource type="Texture2D" uid="uid://b3s4vng3l6scj" path="res://assets/shaders/palette_1.png" id="8_f1q7p"]
+[ext_resource type="Texture2D" uid="uid://v7b3ifijy8gd" path="res://assets/sprites/game_ui/cut_ui/Buttons-1.png.png" id="8_qyx3x"]
+[ext_resource type="Texture2D" uid="uid://c3skcurfnuy6o" path="res://assets/sprites/game_ui/cut_ui/Buttons-3.png.png" id="9_8dguw"]
 [ext_resource type="Texture2D" uid="uid://br5kddp5yts7c" path="res://assets/shaders/palette_1 (1).png" id="9_wy8i0"]
 [ext_resource type="Texture2D" uid="uid://dybm451ptw74m" path="res://assets/shaders/palette_new.png" id="10_2qjpb"]
+[ext_resource type="Script" path="res://dev folders/Louie/scuff_health1.gd" id="11_mwd77"]
+[ext_resource type="Texture2D" uid="uid://dprt1wryxtlah" path="res://assets/sprites/game_ui/Buttons.png" id="11_tgrnf"]
+[ext_resource type="Script" path="res://dev folders/Louie/scuff_health2.gd" id="12_je5lg"]
+[ext_resource type="Script" path="res://dev folders/Louie/scuff_health3.gd" id="13_v5ioe"]
 
 [sub_resource type="Theme" id="Theme_esvr1"]
 default_font = ExtResource("5_w8dr5")
+default_font_size = 8
 
-[node name="game_hud" type="CanvasLayer"]
+[node name="game_hud" type="CanvasLayer" node_paths=PackedStringArray("gold_text", "health_text")]
 script = ExtResource("1_mff0e")
+gold_text = NodePath("Control/Buttons2/GoldText")
+health_text = NodePath("Control/Buttons2/Buttons/HealthText")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -27,6 +38,45 @@ offset_bottom = -704.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.75, 3.75)
+mouse_filter = 2
+
+[node name="Buttons2" type="Sprite2D" parent="Control"]
+position = Vector2(1.86667, 18.6667)
+texture = ExtResource("11_tgrnf")
+centered = false
+region_enabled = true
+region_rect = Rect2(79, 6, 43, 21)
+
+[node name="Buttons" type="Sprite2D" parent="Control/Buttons2"]
+position = Vector2(98.1333, 0.000343323)
+texture = ExtResource("11_tgrnf")
+centered = false
+region_enabled = true
+region_rect = Rect2(79, 6, 43, 21)
+
+[node name="HealthText" type="Label" parent="Control/Buttons2/Buttons"]
+visible = false
+offset_left = 4.26667
+offset_top = 2.66633
+offset_right = 124.267
+offset_bottom = 18.6663
+theme = SubResource("Theme_esvr1")
+text = "3"
+horizontal_alignment = 2
+
+[node name="GoldText" type="Label" parent="Control/Buttons2"]
+offset_left = 15.2
+offset_top = 6.93333
+offset_right = 135.2
+offset_bottom = 14.9333
+theme = SubResource("Theme_esvr1")
+text = "gold"
+
+[node name="Hud" type="Sprite2D" parent="Control/Buttons2/GoldText"]
+position = Vector2(-5.86667, 3.2)
+texture = ExtResource("1_n8mv4")
+region_enabled = true
+region_rect = Rect2(3, 19, 11, 11)
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 0
@@ -59,28 +109,8 @@ texture = ExtResource("2_6ns7m")
 position = Vector2(190.133, -2.66667)
 texture = ExtResource("3_rohyt")
 
-[node name="GoldText" type="Label" parent="Control/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer"]
 layout_mode = 2
-theme = SubResource("Theme_esvr1")
-text = "gold"
-
-[node name="Hud" type="Sprite2D" parent="Control/MarginContainer/GoldText"]
-position = Vector2(-6, 8)
-texture = ExtResource("1_n8mv4")
-region_enabled = true
-region_rect = Rect2(3, 19, 11, 11)
-
-[node name="HealthText" type="Label" parent="Control/MarginContainer"]
-layout_mode = 2
-theme = SubResource("Theme_esvr1")
-text = "health"
-horizontal_alignment = 2
-
-[node name="Hud2" type="Sprite2D" parent="Control/MarginContainer/HealthText"]
-position = Vector2(124, 8)
-texture = ExtResource("1_n8mv4")
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 layout_mode = 2
@@ -96,6 +126,7 @@ layout_mode = 2
 offset_left = 12.0
 offset_right = 20.0
 offset_bottom = 6.0
+mouse_filter = 2
 texture = ExtResource("1_wrlht")
 stretch_mode = 1
 flip_v = true
@@ -105,6 +136,7 @@ layout_mode = 2
 offset_left = 24.0
 offset_right = 24.0
 offset_bottom = 6.0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 visible = false
@@ -150,6 +182,7 @@ stretch_mode = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 border_width = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/ReferenceRect"]
@@ -161,7 +194,107 @@ anchor_bottom = 1.0
 offset_top = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 color = Color(0.345098, 0.266667, 0.133333, 1)
+
+[node name="LeftButton" type="TextureButton" parent="Control"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 48.0
+offset_top = 204.0
+offset_right = 64.0
+offset_bottom = 220.0
+texture_normal = ExtResource("6_acyuc")
+texture_pressed = ExtResource("6_acyuc")
+stretch_mode = 3
+
+[node name="RightButton" type="TextureButton" parent="Control"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 80.0
+offset_top = 204.0
+offset_right = 96.0
+offset_bottom = 220.0
+texture_normal = ExtResource("9_8dguw")
+texture_pressed = ExtResource("9_8dguw")
+stretch_mode = 3
+
+[node name="UpButton" type="TextureButton" parent="Control"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 64.0
+offset_top = 188.0
+offset_right = 80.0
+offset_bottom = 204.0
+texture_normal = ExtResource("7_qxgqd")
+texture_pressed = ExtResource("7_qxgqd")
+stretch_mode = 3
+
+[node name="DownButton" type="TextureButton" parent="Control"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 64.0
+offset_top = 220.0
+offset_right = 80.0
+offset_bottom = 236.0
+texture_normal = ExtResource("8_qyx3x")
+texture_pressed = ExtResource("8_qyx3x")
+stretch_mode = 3
+
+[node name="Hud2" type="Sprite2D" parent="Control"]
+z_index = 2
+position = Vector2(128, 24.8)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+script = ExtResource("11_mwd77")
+
+[node name="Hud5" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(128, 24.8)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
+
+[node name="Hud6" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(116.267, 24.8)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
+
+[node name="Hud7" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(103.733, 25.0667)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
+
+[node name="Hud3" type="Sprite2D" parent="Control"]
+z_index = 2
+position = Vector2(104, 25.0667)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+script = ExtResource("12_je5lg")
+
+[node name="Hud4" type="Sprite2D" parent="Control"]
+z_index = 2
+position = Vector2(115.733, 25.0667)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+script = ExtResource("13_v5ioe")
 
 [node name="PaletteShader" parent="." instance=ExtResource("7_2yfwm")]
 unique_name_in_owner = true
@@ -177,3 +310,8 @@ texture = ExtResource("9_wy8i0")
 [node name="PaletteNew" type="Sprite2D" parent="."]
 position = Vector2(869, 545)
 texture = ExtResource("10_2qjpb")
+
+[connection signal="pressed" from="Control/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Control/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Control/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="Control/DownButton" to="." method="_on_down_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ctsxc00b1xq4c"]
+[gd_scene load_steps=51 format=3 uid="uid://ctsxc00b1xq4c"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/player.gd" id="1_lo43p"]
 [ext_resource type="Texture2D" uid="uid://vb6pe5lgesfu" path="res://assets/sprites/characters/main/elf.png" id="2_74n68"]
@@ -9,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://dimgyilq1d84" path="res://assets/sound/sound effects/player sfx/Dig 2.wav" id="7_kdlao"]
 [ext_resource type="AudioStream" uid="uid://r0knomyh6dlm" path="res://assets/sound/sound effects/player sfx/Damage 2 (2).wav" id="8_wxftw"]
 [ext_resource type="AudioStream" uid="uid://bg77rcm4skd8b" path="res://assets/sound/sound effects/player sfx/Move.wav" id="9_62e8g"]
+[ext_resource type="AudioStream" uid="uid://c30eljwu47k6j" path="res://assets/falling sound.wav" id="10_1wc8d"]
+[ext_resource type="AudioStream" uid="uid://bjwh8fnndjeav" path="res://assets/Ore.wav" id="12_rif33"]
+[ext_resource type="AudioStream" uid="uid://cevixmbcwcs3t" path="res://assets/player damage.wav" id="13_ul5ep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhlqs"]
 atlas = ExtResource("2_74n68")
@@ -218,10 +221,6 @@ region = Rect2(24, 0, 12, 10)
 atlas = ExtResource("4_vr7h7")
 region = Rect2(36, 0, 12, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2b8mu"]
-atlas = ExtResource("4_ms6c5")
-region = Rect2(0, 576, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6tag"]
 atlas = ExtResource("4_ms6c5")
 region = Rect2(48, 576, 48, 48)
@@ -279,9 +278,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2b8mu")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_a6tag")
 }, {
 "duration": 0.5,
@@ -292,10 +288,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d8k2i")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"pickaxe",
-"speed": 12.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -318,29 +317,34 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("dig_sound", "dmg_sound", "move_sound", "_camera")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("dig_sound", "dmg_sound", "move_sound", "fall_sound", "ore_sound", "hurt_sound", "_camera", "tool")]
 position = Vector2(8, 8)
 script = ExtResource("1_lo43p")
 distance_to_move = 50.0
 dig_sound = NodePath("Dig")
 dmg_sound = NodePath("Damage")
 move_sound = NodePath("Move")
+fall_sound = NodePath("FallingSound")
+ore_sound = NodePath("Ore")
+hurt_sound = NodePath("PlayerDamage")
 _camera = NodePath("PlayerCamera")
+tool = NodePath("Sprite/Tool")
 spawn_tile = Vector2i(1, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 top_level = true
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_rcv6q")
-frame_progress = 0.547996
+frame_progress = 0.0339443
 offset = Vector2(0, -4)
 script = ExtResource("3_cxrl4")
 
 [node name="Tool" type="AnimatedSprite2D" parent="Sprite"]
-visible = false
 position = Vector2(-4, 4)
 sprite_frames = SubResource("SpriteFrames_db2l6")
 animation = &"pickaxe"
+frame = 4
+frame_progress = 1.0
 flip_h = true
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -359,3 +363,12 @@ stream = ExtResource("8_wxftw")
 
 [node name="Move" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_62e8g")
+
+[node name="FallingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_1wc8d")
+
+[node name="Ore" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rif33")
+
+[node name="PlayerDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ul5ep")

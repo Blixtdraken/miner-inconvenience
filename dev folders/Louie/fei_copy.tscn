@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=15 format=3 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="7_plexj"]
+[ext_resource type="AudioStream" uid="uid://d3j0lrkcesuv6" path="res://assets/landing.wav" id="9_sol1j"]
 [ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
@@ -426,6 +427,7 @@ debug_axis = false
 [node name="game_hud" parent="." instance=ExtResource("3_feewc")]
 
 [node name="GameOverUI" parent="game_hud" node_paths=PackedStringArray("caveGen") instance=ExtResource("13_c0tpg")]
+mouse_filter = 2
 caveGen = NodePath("../../CaveGenerator")
 
 [node name="WorldTiles" type="TileMapLayer" parent="." node_paths=PackedStringArray("enemy_spawner", "cave_generator")]
@@ -436,15 +438,19 @@ enemy_spawner = NodePath("../EnemySpawner")
 cave_generator = NodePath("../CaveGenerator")
 
 [node name="TurnWait" type="Timer" parent="WorldTiles"]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="HiddenTiles" type="TileMapLayer" parent="WorldTiles"]
 tile_set = SubResource("TileSet_4xj60")
 
-[node name="CaveGenerator" type="Node2D" parent="."]
+[node name="CaveGenerator" type="Node2D" parent="." node_paths=PackedStringArray("land_sound")]
 unique_name_in_owner = true
 script = ExtResource("15_l2qxf")
+land_sound = NodePath("Landing")
+
+[node name="Landing" type="AudioStreamPlayer" parent="CaveGenerator"]
+stream = ExtResource("9_sol1j")
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("worldTiles", "caveGen")]
 script = ExtResource("15_gvcq0")

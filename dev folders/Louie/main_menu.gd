@@ -20,3 +20,17 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://dev folders/Louie/fei_copy.tscn")
 	#get_node("/root/MainMenu").free()
 	pass # Replace with function body.
+
+
+
+
+func _on_help_button_pressed():
+	
+	get_tree().change_scene_to_file("res://dev folders/Louie/help_menu.tscn")
+	pass # Replace with function body.
+
+
+func _on_credits_button_pressed():
+	
+	get_tree().change_scene_to_file("res://dev folders/Louie/credit_menu.tscn")
+	pass # Replace with function body.
