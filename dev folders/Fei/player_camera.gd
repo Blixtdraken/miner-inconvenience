@@ -16,7 +16,7 @@ var rng = RandomNumberGenerator.new()
 
 var functional_pos:Vector2 = Vector2.ZERO
 func _process(delta):
-	var zoom_level:float = get_viewport().size.x/GlobalSettings.pixel_limit
+	var zoom_level:float = GlobalSettings.get_zoom()
 	zoom = Vector2(zoom_level, zoom_level)
 	
 	#if _screen_shake()<0:
