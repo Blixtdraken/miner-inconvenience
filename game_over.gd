@@ -50,10 +50,7 @@ func _game_over():
 
 func _on_retry_button_pressed():
 	
-	GlobalScore.floor = 0
-	GlobalScore.collected_ore = 0
-	GlobalScore.amount_killed = 0
-	GlobalHealth.player_hp = 3
+	
 	_animator.play("slide_up")
 	
 	
@@ -63,14 +60,27 @@ func _on_retry_button_pressed():
 func _on_game_over_animator_animation_finished(anim_name):
 	
 	if anim_name == "slide_up":
+		_reset_score()
 		caveGen.reload_level()
-		print("test")
-		pass
+		#print("test")
+		#pass
 
 	pass # Replace with function body.
 
 
 func _on_menu_button_pressed():
+	
+	_reset_score()
 	get_tree().change_scene_to_file("res://dev folders/Louie/main_menu.tscn")
 	
 	pass # Replace with function body.
+
+
+func _reset_score():
+	
+	GlobalScore.floor = 0
+	GlobalScore.collected_ore = 0
+	GlobalScore.amount_killed = 0
+	GlobalHealth.player_hp = 3
+	
+	pass

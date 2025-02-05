@@ -58,7 +58,7 @@ func _spawn_enemies():
 	#var rand_index:int = randi() % caveGen.map.size()
 	
 	if (worldTiles.tile_check(Vector2i(spawnpos_)).tile_type == TileInfo.TileType.FLOOR) && (worldTiles.tile_check(Vector2i(spawnpos_)).tile_entity == null):
-		var spawn_list = [bat_prefab, slime_prefab]
+		var spawn_list = [spawner_object]
 		
 		var instance = spawn_list[randi()%(spawn_list.size())].instantiate()
 		instance.world_tiles = worldTiles
