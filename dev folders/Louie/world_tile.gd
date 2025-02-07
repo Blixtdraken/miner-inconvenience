@@ -11,6 +11,9 @@ var player_entity:TileEntity = null
 @onready
 var hidden_tiles:TileMapLayer = get_node("HiddenTiles")
 
+@onready
+var border_tiles:TileMapLayer = get_node("BorderTiles")
+
 @export
 var enemy_spawner : EnemySpawner
 
@@ -94,6 +97,9 @@ func tile_check(tile_pos:Vector2i)->TileInfo:
 	var tile_data:TileData = get_cell_tile_data(tile_pos)
 	var tile_entity:TileEntity = get_entity_at_tile(tile_pos)
 	
+	if border_tiles.get_cell_tile_data(tile_pos):
+		return TileInfo.new(tile_pos, null, border_tiles.get_cell_tile_data(tile_pos))
+	
 	return TileInfo.new(tile_pos, tile_entity, tile_data)
 
 func destroy_tile(tile_pos:Vector2i)->bool:
@@ -107,6 +113,12 @@ func destroy_tile(tile_pos:Vector2i)->bool:
 	else:
 		return false
 	return false
+	
+
+func force_destroy_tile(tile_pos:Vector2i)->bool:
+	set_cells_terrain_connect([tile_pos], 0, 1, false)
+	return true
+
 	
 func place_floor(tile_pos:Vector2i)->bool:
 	var tile_info:TileInfo = tile_check(tile_pos)
