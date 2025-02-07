@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdgtv1vhfv4el"]
+[gd_scene load_steps=11 format=3 uid="uid://cdgtv1vhfv4el"]
 
 [ext_resource type="FontFile" uid="uid://b7veor7527ms6" path="res://assets/fonts/pixel_font.ttf" id="1_lxdxe"]
 [ext_resource type="Texture2D" uid="uid://c20bq3bc6luvs" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button.png" id="1_x1ho4"]
 [ext_resource type="Texture2D" uid="uid://cmpdi7ou5h803" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button_pressed.png" id="2_eo4xx"]
 [ext_resource type="Script" path="res://dev folders/Louie/back_button.gd" id="3_avct1"]
 [ext_resource type="Texture2D" uid="uid://bv3ivhju0m8aa" path="res://assets/sprites/game_ui/Tutorial.png" id="4_fjw41"]
+[ext_resource type="Texture2D" uid="uid://cc3hjb5hm28r7" path="res://assets/sprites/props/props.png" id="6_ongwb"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="12_2gcil"]
 [ext_resource type="Texture2D" uid="uid://ccrykbagcjxee" path="res://assets/sprites/game_ui/cut_ui/ui_elements.png" id="13_wnr8g"]
 [ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="14_qa1bo"]
@@ -26,9 +27,9 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = -68.8
+offset_left = -71.4667
 offset_top = -4.0
-offset_right = 84.2
+offset_right = 81.5333
 offset_bottom = 374.0
 mouse_filter = 2
 theme_override_constants/margin_top = 40
@@ -59,7 +60,7 @@ autowrap_mode = 2
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y7nrh")
-text = "Look for the hidden hole under one to dig deeper! Good luck!"
+text = "Look for the hidden hole under a crystal to dig deeper! "
 autowrap_mode = 2
 
 [node name="Hud" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
@@ -100,10 +101,23 @@ region_rect = Rect2(0, 97, 144, 55)
 
 [node name="Tutorial4" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(-0.533333, 192.733)
+position = Vector2(-0.533, 192)
 texture = ExtResource("4_fjw41")
 region_enabled = true
 region_rect = Rect2(0, 152, 144, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial4"]
+z_index = 1
+position = Vector2(8.79966, -9.33333)
+texture = ExtResource("6_ongwb")
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial4"]
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 1.0
+color = Color(0.345098, 0.266667, 0.133333, 1)
 
 [node name="MenuButton" type="TextureButton" parent="."]
 z_index = 1

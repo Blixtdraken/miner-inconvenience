@@ -34,7 +34,7 @@ scale = Vector2(3.75, 3.75)
 mouse_filter = 2
 
 [node name="Buttons2" type="Sprite2D" parent="Control"]
-position = Vector2(1.86667, 18.6667)
+position = Vector2(1.86667, 3.2)
 texture = ExtResource("11_tgrnf")
 centered = false
 region_enabled = true
@@ -56,6 +56,66 @@ offset_bottom = 18.6663
 theme = SubResource("Theme_esvr1")
 text = "3"
 horizontal_alignment = 2
+
+[node name="Hearts" type="Control" parent="Control/Buttons2/Buttons" node_paths=PackedStringArray("heart1", "heart2", "heart3")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.73336
+offset_top = 4.53295
+offset_right = 3.73336
+offset_bottom = 4.53295
+script = ExtResource("12_y3tfw")
+heart1 = NodePath("FullHeart1")
+heart2 = NodePath("FullHeart2")
+heart3 = NodePath("FullHeart3")
+
+[node name="FullHeart1" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 2
+position = Vector2(0, 1)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="FullHeart2" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 2
+position = Vector2(12, 1)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="FullHeart3" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 2
+position = Vector2(24, 1)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="EmptyHeart3" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 1
+position = Vector2(24, 1.06667)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
+
+[node name="EmptyHeart2" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 1
+position = Vector2(12.267, 1.06667)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
+
+[node name="EmptyHeart1" type="Sprite2D" parent="Control/Buttons2/Buttons/Hearts"]
+z_index = 1
+position = Vector2(-0.267006, 1.33336)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(35, 3, 11, 10)
 
 [node name="GoldText" type="Label" parent="Control/Buttons2"]
 offset_left = 15.2
@@ -230,68 +290,9 @@ texture_normal = ExtResource("8_qyx3x")
 texture_pressed = ExtResource("8_qyx3x")
 stretch_mode = 3
 
-[node name="Hearts" type="Control" parent="Control" node_paths=PackedStringArray("heart1", "heart2", "heart3")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 104.0
-offset_top = 23.4667
-offset_right = 104.0
-offset_bottom = 23.4667
-script = ExtResource("12_y3tfw")
-heart1 = NodePath("FullHeart1")
-heart2 = NodePath("FullHeart2")
-heart3 = NodePath("FullHeart3")
-
-[node name="FullHeart1" type="Sprite2D" parent="Control/Hearts"]
-z_index = 2
-position = Vector2(0, 1)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
-
-[node name="FullHeart2" type="Sprite2D" parent="Control/Hearts"]
-z_index = 2
-position = Vector2(12, 1)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
-
-[node name="FullHeart3" type="Sprite2D" parent="Control/Hearts"]
-z_index = 2
-position = Vector2(24, 1)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
-
-[node name="EmptyHeart3" type="Sprite2D" parent="Control/Hearts"]
-z_index = 1
-position = Vector2(24, 1.06667)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(35, 3, 11, 10)
-
-[node name="EmptyHeart2" type="Sprite2D" parent="Control/Hearts"]
-z_index = 1
-position = Vector2(12.267, 1.06667)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(35, 3, 11, 10)
-
-[node name="EmptyHeart1" type="Sprite2D" parent="Control/Hearts"]
-z_index = 1
-position = Vector2(-0.267006, 1.33336)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(35, 3, 11, 10)
-
 [node name="PaletteShader" parent="." instance=ExtResource("7_2yfwm")]
 unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="Control/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="Control/RightButton" to="." method="_on_right_button_pressed"]
