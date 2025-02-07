@@ -28,8 +28,7 @@ func _process(delta: float) -> void:
 	var zoom:float = get_viewport().size.x/144
 	(rect.material as ShaderMaterial).set_shader_parameter("pixSize", get_viewport().size.x/GlobalSettings.pixel_limit)
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		closed = !closed
+
 	
 	if closed:
 		ratio = move_toward(ratio, 0.0, delta*speed)
