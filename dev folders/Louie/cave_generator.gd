@@ -74,11 +74,6 @@ func generate_level():
 func reload_level():
 	get_tree().reload_current_scene()
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		reload_level()
-		
-		
 
 func _generate_ore(amount_modifier, type):
 	var ore_amount = RandomNumberGenerator.new().randi_range(0,3)
