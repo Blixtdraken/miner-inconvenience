@@ -13,10 +13,11 @@ config_version=5
 config/name="Miner Inconvenience"
 run/main_scene="res://dev folders/Louie/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.404271, 0.162559, 0, 1)
-boot_splash/image="res://assets/ui_elements.png"
+boot_splash/bg_color=Color(0.192124, 0.42444, 4.81307e-07, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://assets/ui_elements.png"
+config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
@@ -31,7 +32,6 @@ ClosingEffect="*res://scenes/instantiable/closing_effect.tscn"
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/size/resizable=false
-display_server/driver.linuxbsd="wayland"
 window/handheld/orientation=1
 
 [input]

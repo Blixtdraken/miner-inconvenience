@@ -52,7 +52,7 @@ stretch_mode = 3
 script = ExtResource("8_ckanb")
 
 [node name="Credits" type="Sprite2D" parent="."]
-position = Vector2(0, 108)
+position = Vector2(0, 96)
 texture = ExtResource("5_2qgqr")
 
 [node name="ColorRect" type="ColorRect" parent="Credits"]
@@ -79,7 +79,7 @@ grow_vertical = 2
 layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.470588, 0.643137, 0.415686, 1)
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 1
 text = "---"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -98,8 +98,7 @@ layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
 theme_override_font_sizes/font_size = 8
-text = "ALL ART ASSETS:
-"
+text = "-- ALL ART ASSETS: --"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -127,8 +126,9 @@ layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
 theme_override_font_sizes/font_size = 8
-text = "CODE:
+text = "-- CODE: --
 Fei Daderman
+and
 Louie W. Stormdal"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -146,7 +146,7 @@ layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
 theme_override_font_sizes/font_size = 8
-text = "SOUND:
+text = "-- SOUND: --
 David Simons
 "
 horizontal_alignment = 1
@@ -157,8 +157,8 @@ layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
 theme_override_font_sizes/font_size = 8
-text = "MUSIC:
-NATHAN BODIN
+text = "-- MUSIC: --
+Nathan Bodin
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -168,7 +168,7 @@ layout_mode = 2
 theme = ExtResource("6_bs0ie")
 theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
 theme_override_font_sizes/font_size = 8
-text = "SPECIAL THANKS:
+text = "-- SPECIAL THANKS: --
 Toadzilla, again
 Frank Stenberg
 Eldrid Grins Evaldt

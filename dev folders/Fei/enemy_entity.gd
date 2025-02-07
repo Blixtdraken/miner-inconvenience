@@ -6,6 +6,7 @@ var hp:int = 1
 @onready
 var sprite:AnimatedSprite2D = get_node("Sprite")
 
+@export var dmg: int = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_start() -> void:
@@ -18,7 +19,7 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		if tile_info.tile_entity is Player:
 			print("HIT THE HTING")
 			var player:Player = world_tiles.get_entity_at_tile(value)
-			player._on_damage(1)
+			player._on_damage(dmg)
 			sprite.play("attack")
 		return tile_pos
 	
