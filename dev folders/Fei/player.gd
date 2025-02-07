@@ -49,6 +49,9 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 	
 	if tile_info.tile_entity:
 		if tile_info.tile_entity is HoleEntity:
+			
+			ClosingEffect.close()
+			
 			tile_event_entity = tile_info.tile_entity
 			tile_event_status = TileEventStatus.WAITING
 			global_position = world_tiles.local_to_map(value)
@@ -125,6 +128,9 @@ func kill():
 	pass
 
 func _on_start():
+	
+	ClosingEffect.open()
+	
 	world_tiles.player_entity = self
 	player_sprite.global_position = global_position
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=17 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="7_plexj"]
 [ext_resource type="TileSet" uid="uid://c6jxr8hae8twk" path="res://assets/other/border_tileset.tres" id="8_yo8l7"]
 [ext_resource type="AudioStream" uid="uid://d3j0lrkcesuv6" path="res://assets/landing.wav" id="9_sol1j"]
-[ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
 [ext_resource type="Texture2D" uid="uid://c2ya2io01jcrh" path="res://assets/sprites/grounds_and_walls/surground.png" id="11_jp838"]
 [ext_resource type="PackedScene" uid="uid://bfr1iq4ikii7f" path="res://scenes/instantiable/closing_effect.tscn" id="12_biype"]
+[ext_resource type="AudioStream" uid="uid://xbbylr5a663y" path="res://assets/sound/music/final_music.mp3" id="12_qr4xf"]
 [ext_resource type="PackedScene" uid="uid://bag0tu0804u4w" path="res://game_over.tscn" id="13_c0tpg"]
+[ext_resource type="Script" path="res://dev folders/Louie/music_manager.gd" id="13_elem2"]
 [ext_resource type="Script" path="res://dev folders/Louie/enemy_spawner.gd" id="15_gvcq0"]
 [ext_resource type="Script" path="res://dev folders/Louie/cave_generator.gd" id="15_l2qxf"]
 
@@ -456,15 +457,19 @@ land_sound = NodePath("Landing")
 
 [node name="Landing" type="AudioStreamPlayer" parent="CaveGenerator"]
 stream = ExtResource("9_sol1j")
+volume_db = -12.0
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("worldTiles", "caveGen")]
 script = ExtResource("15_gvcq0")
 worldTiles = NodePath("../WorldTiles")
 caveGen = NodePath("../CaveGenerator")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_66ro7")
-autoplay = true
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_qr4xf")
+volume_db = 10.0
+parameters/looping = true
+script = ExtResource("13_elem2")
 
 [node name="ShaderManager" type="Node2D" parent="."]
 script = ExtResource("11_cu3tn")

@@ -7,7 +7,7 @@ var closed:bool = false
 
 var ratio:float = 1.0
 
-var speed:float = 2
+var speed:float = 1.5
 
 signal closing_finished
 signal opening_finished

@@ -83,4 +83,6 @@ func _reset_score():
 	GlobalScore.amount_killed = 0
 	GlobalHealth.player_hp = 3
 	
+	GlobalScore.music_progress = 0.0
+	
 	pass
