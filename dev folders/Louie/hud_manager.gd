@@ -17,7 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gold_text.text = str(GlobalScore.collected_ore)
-	health_text.text = str(GlobalHealth.player_hp)
+	#health_text.text = str(GlobalHealth.player_hp)
 	
 	if Input.is_action_just_pressed("ui_left"):
 		

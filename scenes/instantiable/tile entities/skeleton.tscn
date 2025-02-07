@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://bce0vy2uhtdo3"]
 
-[ext_resource type="Script" path="res://dev folders/Louie/slime_enemy.gd" id="1_4egps"]
+[ext_resource type="Script" path="res://dev folders/Louie/skeleton_enemy.gd" id="1_non5d"]
 [ext_resource type="Texture2D" uid="uid://iulkg4fmlk8y" path="res://assets/sprites/icon.svg" id="2_kxst6"]
 [ext_resource type="Texture2D" uid="uid://q85tas85kig1" path="res://assets/sprites/characters/enemies/slime.png" id="2_vqmwq"]
 [ext_resource type="Texture2D" uid="uid://di7clr3sx36o5" path="res://assets/sprites/SGQ_Enemies/normal/16x16/skeleton.png" id="3_fln00"]
@@ -216,9 +216,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2pp4d")
 }],
-"loop": true,
+"loop": false,
 "name": &"shield",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -244,7 +244,7 @@ animations = [{
 [node name="Skeleton" type="Node2D"]
 z_index = 10
 position = Vector2(-24, 24)
-script = ExtResource("1_4egps")
+script = ExtResource("1_non5d")
 
 [node name="Icon" type="Sprite2D" parent="."]
 z_index = -6
@@ -257,7 +257,7 @@ texture = ExtResource("2_kxst6")
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_8u6rv")
-frame_progress = 0.863086
+frame_progress = 0.542032
 offset = Vector2(0, -1)
 script = ExtResource("3_pltk2")
 

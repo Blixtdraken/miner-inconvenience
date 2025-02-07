@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gqnayxf0c328"]
+[gd_scene load_steps=18 format=3 uid="uid://gqnayxf0c328"]
 
 [ext_resource type="Script" path="res://dev folders/Louie/hud_manager.gd" id="1_mff0e"]
 [ext_resource type="Texture2D" uid="uid://0a5h1g3t2ubd" path="res://assets/sprites/game_ui/hud.png" id="1_n8mv4"]
@@ -14,10 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c3skcurfnuy6o" path="res://assets/sprites/game_ui/cut_ui/Buttons-3.png.png" id="9_8dguw"]
 [ext_resource type="Texture2D" uid="uid://br5kddp5yts7c" path="res://assets/shaders/palette_1 (1).png" id="9_wy8i0"]
 [ext_resource type="Texture2D" uid="uid://dybm451ptw74m" path="res://assets/shaders/palette_new.png" id="10_2qjpb"]
-[ext_resource type="Script" path="res://dev folders/Louie/scuff_health1.gd" id="11_mwd77"]
 [ext_resource type="Texture2D" uid="uid://dprt1wryxtlah" path="res://assets/sprites/game_ui/Buttons.png" id="11_tgrnf"]
-[ext_resource type="Script" path="res://dev folders/Louie/scuff_health2.gd" id="12_je5lg"]
-[ext_resource type="Script" path="res://dev folders/Louie/scuff_health3.gd" id="13_v5ioe"]
+[ext_resource type="Script" path="res://dev folders/Louie/heart_manager.gd" id="12_y3tfw"]
 
 [sub_resource type="Theme" id="Theme_esvr1"]
 default_font = ExtResource("5_w8dr5")
@@ -245,56 +243,65 @@ texture_normal = ExtResource("8_qyx3x")
 texture_pressed = ExtResource("8_qyx3x")
 stretch_mode = 3
 
-[node name="Hud2" type="Sprite2D" parent="Control"]
+[node name="Hearts" type="Control" parent="Control" node_paths=PackedStringArray("heart1", "heart2", "heart3")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 23.4667
+offset_right = 104.0
+offset_bottom = 23.4667
+script = ExtResource("12_y3tfw")
+heart1 = NodePath("FullHeart1")
+heart2 = NodePath("FullHeart2")
+heart3 = NodePath("FullHeart3")
+
+[node name="FullHeart1" type="Sprite2D" parent="Control/Hearts"]
 z_index = 2
-position = Vector2(128, 24.8)
+position = Vector2(0, 1)
 texture = ExtResource("1_n8mv4")
 centered = false
 region_enabled = true
 region_rect = Rect2(3, 3, 11, 10)
-script = ExtResource("11_mwd77")
 
-[node name="Hud5" type="Sprite2D" parent="Control"]
+[node name="FullHeart2" type="Sprite2D" parent="Control/Hearts"]
+z_index = 2
+position = Vector2(12, 1)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="FullHeart3" type="Sprite2D" parent="Control/Hearts"]
+z_index = 2
+position = Vector2(24, 1)
+texture = ExtResource("1_n8mv4")
+centered = false
+region_enabled = true
+region_rect = Rect2(3, 3, 11, 10)
+
+[node name="EmptyHeart3" type="Sprite2D" parent="Control/Hearts"]
 z_index = 1
-position = Vector2(128, 24.8)
+position = Vector2(24, 1.06667)
 texture = ExtResource("1_n8mv4")
 centered = false
 region_enabled = true
 region_rect = Rect2(35, 3, 11, 10)
 
-[node name="Hud6" type="Sprite2D" parent="Control"]
+[node name="EmptyHeart2" type="Sprite2D" parent="Control/Hearts"]
 z_index = 1
-position = Vector2(116.267, 24.8)
+position = Vector2(12.267, 1.06667)
 texture = ExtResource("1_n8mv4")
 centered = false
 region_enabled = true
 region_rect = Rect2(35, 3, 11, 10)
 
-[node name="Hud7" type="Sprite2D" parent="Control"]
+[node name="EmptyHeart1" type="Sprite2D" parent="Control/Hearts"]
 z_index = 1
-position = Vector2(103.733, 25.0667)
+position = Vector2(-0.267006, 1.33336)
 texture = ExtResource("1_n8mv4")
 centered = false
 region_enabled = true
 region_rect = Rect2(35, 3, 11, 10)
-
-[node name="Hud3" type="Sprite2D" parent="Control"]
-z_index = 2
-position = Vector2(104, 25.0667)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
-script = ExtResource("12_je5lg")
-
-[node name="Hud4" type="Sprite2D" parent="Control"]
-z_index = 2
-position = Vector2(115.733, 25.0667)
-texture = ExtResource("1_n8mv4")
-centered = false
-region_enabled = true
-region_rect = Rect2(3, 3, 11, 10)
-script = ExtResource("13_v5ioe")
 
 [node name="PaletteShader" parent="." instance=ExtResource("7_2yfwm")]
 unique_name_in_owner = true
