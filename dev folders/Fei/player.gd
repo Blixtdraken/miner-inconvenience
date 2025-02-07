@@ -64,6 +64,9 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		if tile_info.tile_entity is EnemyEntity:
 			_camera._screen_shake(1)
 			dmg_sound.play(0)
+		
+		
+		
 		return tile_pos
 		pass
 	
@@ -80,8 +83,8 @@ func _on_try_walk(value:Vector2i, tile_info:TileInfo) -> Vector2i:
 		var instance = load("res://scenes/instantiable/ores/ore_particles/wall_particles.tscn").instantiate()
 		get_parent().add_child(instance)
 		instance.global_position = world_tiles.map_to_local(value)
-
-		
+		return tile_pos
+	elif tile_info.tile_type == TileInfo.TileType.BORDER:
 		return tile_pos
 		
 	return tile_pos
