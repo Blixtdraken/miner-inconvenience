@@ -63,8 +63,8 @@ func _spawn_enemies():
 		var instance = spawn_list[randi()%(spawn_list.size())].instantiate()
 		instance.world_tiles = worldTiles
 		instance.spawn_tile = spawnpos_
-	
 		get_parent().add_child.call_deferred(instance)
+		#worldTiles.tile_entities[spawnpos_] = instance
 		
 
 	

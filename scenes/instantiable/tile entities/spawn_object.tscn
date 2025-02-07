@@ -114,5 +114,5 @@ script = ExtResource("1_8mph7")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ijiq6")
 autoplay = "default"
-frame_progress = 0.832398
+frame_progress = 0.274475
 offset = Vector2(0, -1)

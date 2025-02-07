@@ -20,7 +20,7 @@ func _on_turn():
 	
 	
 	
-	var enemy_list = [load("res://scenes/instantiable/tile entities/slime.tscn"), load("res://scenes/instantiable/tile entities/bat.tscn")]
+	var enemy_list = [load("res://scenes/instantiable/tile entities/slime.tscn"), load("res://scenes/instantiable/tile entities/bat.tscn"), load("res://scenes/instantiable/tile entities/rat.tscn")]
 	print("test 2")
 	var spawn_enemy = enemy_list[randi()%(enemy_list.size())].instantiate()
 	world_tiles.tile_entities.erase(tile_pos)

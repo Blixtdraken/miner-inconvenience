@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://2q6coynrxygo"]
+[gd_scene load_steps=18 format=4 uid="uid://2q6coynrxygo"]
 
 [ext_resource type="Script" path="res://dev folders/Fei/fei.gd" id="1_gkh45"]
 [ext_resource type="TileSet" uid="uid://jwt18fwp2jfw" path="res://assets/other/second_tileset.tres" id="3_f8wic"]
 [ext_resource type="PackedScene" uid="uid://gqnayxf0c328" path="res://dev folders/Louie/game_hud.tscn" id="3_feewc"]
 [ext_resource type="Script" path="res://dev folders/Louie/world_tile.gd" id="7_plexj"]
+[ext_resource type="Texture2D" uid="uid://vca0t3pjy16b" path="res://assets/sprites/grounds_and_walls/walls.png" id="8_ixx26"]
 [ext_resource type="AudioStream" uid="uid://d3j0lrkcesuv6" path="res://assets/landing.wav" id="9_sol1j"]
 [ext_resource type="AudioStream" uid="uid://3a8ewfcojhee" path="res://assets/sound/music/baptulbimtune4(1).mp3" id="10_66ro7"]
 [ext_resource type="Script" path="res://dev folders/Louie/shader_manager.gd" id="11_cu3tn"]
@@ -418,6 +419,28 @@ custom_data_layer_0/name = "type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_yvcyr")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_be5av"]
+texture = ExtResource("8_ixx26")
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e4qou"]
+sources/1 = SubResource("TileSetAtlasSource_be5av")
+
 [node name="Fei" type="Node2D"]
 script = ExtResource("1_gkh45")
 debug_axis = false
@@ -443,6 +466,10 @@ one_shot = true
 
 [node name="HiddenTiles" type="TileMapLayer" parent="WorldTiles"]
 tile_set = SubResource("TileSet_4xj60")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldTiles"]
+tile_map_data = PackedByteArray("AAD/////AQABAAgAAAAAAP//AQADAAUAAAABAP//AQADAAUAAAACAP//AQADAAUAAAADAP//AQADAAUAAAAEAP//AQADAAUAAAAFAP//AQADAAUAAAAGAP//AQADAAUAAAAHAP//AQADAAUAAAAIAP//AQADAAUAAAAJAP//AQADAAUAAAAKAP//AQADAAUAAAALAP//AQADAAUAAAAMAP//AQADAAUAAAANAP//AQADAAUAAAAOAP//AQADAAUAAAAPAP//AQADAAUAAAAQAP//AQADAAUAAAARAP//AQADAAUAAAASAP//AQADAAUAAAATAP//AQADAAUAAAAVAP//AQADAAUAAAAWAP//AQADAAUAAAAXAP//AQADAAUAAAAYAP//AQADAAUAAAAUAP//AQADAAUAAAAZAP//AQADAAUAAAAaAP//AQADAAUAAAAbAP//AQADAAUAAAAcAP//AQADAAUAAAAdAP//AQADAAUAAAAeAP//AQADAAUAAAAfAP//AQADAAUAAAAgAP//AQADAAUAAAAhAP//AQADAAUAAAAiAP//AQADAAUAAAAjAP//AQADAAUAAAAkAP//AQADAAUAAAAlAP//AQADAAUAAAAmAP//AQADAAUAAAAnAAAAAQADAAcAAAAnAAEAAQADAAcAAAAnAAIAAQADAAcAAAAnAAMAAQADAAcAAAAnAAQAAQADAAcAAAAnAAUAAQADAAcAAAAnAAYAAQADAAcAAAAnAAcAAQADAAcAAAAnAAgAAQADAAcAAAAnAAkAAQADAAcAAAAnAAoAAQADAAcAAAAnAAsAAQADAAcAAAAnAAwAAQADAAcAAAAnAA0AAQADAAcAAAAnAA4AAQADAAcAAAAnAA8AAQADAAcAAAAnABAAAQADAAcAAAAnABEAAQADAAcAAAAnABIAAQADAAcAAAAnABMAAQADAAcAAAAnABQAAQADAAcAAAAnABUAAQADAAcAAAAnABYAAQADAAgAAAD//wAAAQABAAUAAAD//wEAAQABAAUAAAD//wIAAQABAAUAAAD//wMAAQABAAUAAAD//wQAAQABAAUAAAD//wUAAQABAAUAAAD//wYAAQABAAUAAAD//wcAAQABAAUAAAD//wgAAQABAAUAAAD//wkAAQABAAUAAAD//woAAQABAAUAAAD//wsAAQABAAUAAAD//wwAAQABAAUAAAD//w0AAQABAAUAAAD//w4AAQABAAUAAAD//w8AAQABAAUAAAD//xAAAQABAAUAAAD//xEAAQABAAUAAAD//xIAAQABAAUAAAD//xMAAQABAAUAAAD//xQAAQABAAUAAAD//xUAAQABAAUAAAD//xYAAQAAAAcAAAAnAP//AQAAAAUAAAAAABYAAQABAAcAAAABABYAAQABAAcAAAACABYAAQABAAcAAAADABYAAQABAAcAAAAEABYAAQABAAcAAAAFABYAAQABAAcAAAAGABYAAQABAAcAAAAHABYAAQABAAcAAAAIABYAAQABAAcAAAAJABYAAQABAAcAAAAKABYAAQABAAcAAAALABYAAQABAAcAAAAMABYAAQABAAcAAAANABYAAQABAAcAAAAOABYAAQABAAcAAAAPABYAAQABAAcAAAAQABYAAQABAAcAAAARABYAAQABAAcAAAASABYAAQABAAcAAAATABYAAQABAAcAAAAUABYAAQABAAcAAAAVABYAAQABAAcAAAAWABYAAQABAAcAAAAXABYAAQABAAcAAAAYABYAAQABAAcAAAAZABYAAQABAAcAAAAaABYAAQABAAcAAAAbABYAAQABAAcAAAAcABYAAQABAAcAAAAdABYAAQABAAcAAAAeABYAAQABAAcAAAAfABYAAQABAAcAAAAgABYAAQABAAcAAAAhABYAAQABAAcAAAAiABYAAQABAAcAAAAjABYAAQABAAcAAAAkABYAAQABAAcAAAAlABYAAQABAAcAAAAmABYAAQABAAcAAAA=")
+tile_set = SubResource("TileSet_e4qou")
 
 [node name="CaveGenerator" type="Node2D" parent="." node_paths=PackedStringArray("land_sound")]
 unique_name_in_owner = true
