@@ -114,6 +114,6 @@ dmg = 0
 top_level = true
 position = Vector2(-24, 24)
 sprite_frames = SubResource("SpriteFrames_1xc20")
-frame_progress = 0.848625
+frame_progress = 0.330002
 offset = Vector2(0, -1)
 script = ExtResource("3_resi0")

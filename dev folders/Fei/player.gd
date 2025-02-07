@@ -102,7 +102,9 @@ func _on_after_walked(value:Vector2i,  tile_info:TileInfo):
 	pass
 
 func _on_damage(damage:int):
-	GlobalHealth.player_hp -= 1
+	if damage == 0:
+		return
+	GlobalHealth.player_hp -= damage
 	player_sprite.play("hurt")
 	hurt_sound.play(0)
 	

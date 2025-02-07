@@ -7,8 +7,7 @@ extends Node2D
 @export var worldTiles : WorldTiles
 @export var caveGen : CaveGenerator
 
-const slime_prefab = preload("res://scenes/instantiable/tile entities/slime.tscn")
-const bat_prefab = preload("res://scenes/instantiable/tile entities/bat.tscn")
+
 const spawner_object = preload("res://scenes/instantiable/tile entities/spawn_object.tscn")
 
 var spawn_time : int = 0

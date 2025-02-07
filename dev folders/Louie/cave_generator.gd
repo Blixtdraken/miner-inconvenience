@@ -79,6 +79,11 @@ func generate_level():
 
 func reload_level():
 	
+	var entity_list:Array[TileEntity] = tileMap.get_tile_entiteties()
+	
+	for entity in entity_list:
+		entity.queue_free()
+	
 	GlobalScore.music_progress = %Music.get_playback_position()
 	get_tree().reload_current_scene()
 
