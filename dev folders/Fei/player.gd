@@ -129,55 +129,56 @@ func _on_start():
 	player_sprite.global_position = global_position
 	pass
 func _input(event):
-	if !world_tiles.waiting_for_turn or tile_event_status != TileEventStatus.IDLE:
-		return
-	if event is InputEventScreenTouch:
-		event = event as InputEventScreenTouch
-		if event.is_pressed():
-			start_finger_pos = event.position
-			current_finger_pos = start_finger_pos
-			pressing = true
-		elif event.is_released():
-			start_finger_pos = Vector2.ZERO
-			current_finger_pos = Vector2.ZERO
-			pressing = false
-			waiting_on_release = false
-		
-	elif event is InputEventScreenDrag:
-		event = event as InputEventScreenDrag
-		current_finger_pos = event.position
-		
-		
-		var delta_vec:Vector2 = (current_finger_pos-start_finger_pos)
-		if delta_vec.length() >= distance_to_move and !waiting_on_release:
-			waiting_on_release = true
+	if GlobalHealth.player_hp > 0:
+		if !world_tiles.waiting_for_turn or tile_event_status != TileEventStatus.IDLE:
+			return
+		if event is InputEventScreenTouch:
+			event = event as InputEventScreenTouch
+			if event.is_pressed():
+				start_finger_pos = event.position
+				current_finger_pos = start_finger_pos
+				pressing = true
+			elif event.is_released():
+				start_finger_pos = Vector2.ZERO
+				current_finger_pos = Vector2.ZERO
+				pressing = false
+				waiting_on_release = false
+			
+		elif event is InputEventScreenDrag:
+			event = event as InputEventScreenDrag
+			current_finger_pos = event.position
 			
 			
-			var vec:Vector2 = Vector2.from_angle(snappedf(delta_vec.angle(), PI / 2))
+			var delta_vec:Vector2 = (current_finger_pos-start_finger_pos)
+			if delta_vec.length() >= distance_to_move and !waiting_on_release:
+				waiting_on_release = true
+				
+				
+				var vec:Vector2 = Vector2.from_angle(snappedf(delta_vec.angle(), PI / 2))
+				
+				
 			
-			
+				
+				tile_pos += Vector2i(vec)
+				change_player_direction(vec)
+			pass
 		
+		elif Input.get_vector("ui_left","ui_right","ui_up","ui_down") !=  Vector2.ZERO:
+			var dir:Vector2i = Vector2.ZERO
 			
-			tile_pos += Vector2i(vec)
-			change_player_direction(vec)
-		pass
-	
-	elif Input.get_vector("ui_left","ui_right","ui_up","ui_down") !=  Vector2.ZERO:
-		var dir:Vector2i = Vector2.ZERO
-		
-		if Input.is_action_just_pressed("ui_left"):
-			dir = Vector2i.LEFT
-		elif Input.is_action_just_pressed("ui_right"):
-			dir = Vector2i.RIGHT
-		elif Input.is_action_just_pressed("ui_up"):
-			dir = Vector2i.UP
-		elif Input.is_action_just_pressed("ui_down"):
-			dir = Vector2i.DOWN
-		
-		if dir != Vector2i.ZERO:
-			tile_pos += Vector2i(dir)
-		change_player_direction(dir)
+			if Input.is_action_just_pressed("ui_left"):
+				dir = Vector2i.LEFT
+			elif Input.is_action_just_pressed("ui_right"):
+				dir = Vector2i.RIGHT
+			elif Input.is_action_just_pressed("ui_up"):
+				dir = Vector2i.UP
+			elif Input.is_action_just_pressed("ui_down"):
+				dir = Vector2i.DOWN
 			
+			if dir != Vector2i.ZERO:
+				tile_pos += Vector2i(dir)
+			change_player_direction(dir)
+				
 
 func change_player_direction(dir:Vector2):
 	dir = dir.round()

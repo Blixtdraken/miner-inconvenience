@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://canyej8qkwpxv"]
+[gd_scene load_steps=7 format=3 uid="uid://canyej8qkwpxv"]
 
 [ext_resource type="PackedScene" uid="uid://dyrv7hvj7cqhx" path="res://scenes/palette_shader.tscn" id="4_usdvh"]
 [ext_resource type="Texture2D" uid="uid://c4i60srgflmp6" path="res://assets/Credits.png" id="5_2qgqr"]
+[ext_resource type="Theme" uid="uid://cu5xxv0w32xg8" path="res://dev folders/Louie/title_button_theme.tres" id="6_bs0ie"]
 [ext_resource type="Texture2D" uid="uid://c20bq3bc6luvs" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button.png" id="6_x1rva"]
 [ext_resource type="Texture2D" uid="uid://cmpdi7ou5h803" path="res://assets/sprites/game_ui/cut_ui/menu_buttons/back_button_pressed.png" id="7_nx23g"]
 [ext_resource type="Script" path="res://dev folders/Louie/back_button.gd" id="8_ckanb"]
@@ -51,7 +52,140 @@ stretch_mode = 3
 script = ExtResource("8_ckanb")
 
 [node name="Credits" type="Sprite2D" parent="."]
-position = Vector2(0, 108.8)
+position = Vector2(0, 108)
 texture = ExtResource("5_2qgqr")
+
+[node name="ColorRect" type="ColorRect" parent="Credits"]
+z_index = 1
+offset_left = -50.0
+offset_top = -85.0
+offset_right = 49.0
+offset_bottom = 123.0
+color = Color(0.470588, 0.643137, 0.415686, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.006
+anchor_right = 1.01
+anchor_bottom = 1.006
+offset_top = -0.022
+offset_right = 0.0200043
+offset_bottom = 0.0219879
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel2" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.470588, 0.643137, 0.415686, 1)
+theme_override_font_sizes/font_size = 4
+text = "---"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 16
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArtLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "ALL ART ASSETS:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArtLabel2" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "Toadzilla"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArtLabel3" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "toadzilla.itch.io
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CodeLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "CODE:
+Fei Daderman
+Louie W. Stormdal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Credits/ColorRect/VBoxContainer/CodeLabel"]
+z_index = 1
+offset_left = 44.0
+offset_top = 11.0
+offset_right = 45.0
+offset_bottom = 12.0
+color = Color(0.345098, 0.266667, 0.133333, 1)
+
+[node name="SoundLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "SOUND:
+David Simons
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "MUSIC:
+NATHAN BODIN
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThanksLabel" type="Label" parent="Credits/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_bs0ie")
+theme_override_colors/font_color = Color(0.345098, 0.266667, 0.133333, 1)
+theme_override_font_sizes/font_size = 8
+text = "SPECIAL THANKS:
+Toadzilla, again
+Frank Stenberg
+Eldrid Grins Evaldt
+Tobias Persson"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Sprite2D" parent="Credits"]
+position = Vector2(0, 96)
+texture = ExtResource("5_2qgqr")
+region_enabled = true
+region_rect = Rect2(0, 122, 144, 78)
+
+[node name="Credits2" type="Sprite2D" parent="Credits"]
+position = Vector2(0, -64)
+texture = ExtResource("5_2qgqr")
+region_enabled = true
+region_rect = Rect2(0, 9, 144, 71)
 
 [connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_pressed"]
