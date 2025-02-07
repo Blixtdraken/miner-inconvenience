@@ -11,7 +11,7 @@ var parent:Node2D = get_parent()
 var functional_pos:Vector2 = Vector2.ZERO
 
 func setup():
-	functional_pos = parent.global_position
+	functional_pos = parent.global_position + Vector2.UP*3000
 	pass
 func _ready():
 	play("default")

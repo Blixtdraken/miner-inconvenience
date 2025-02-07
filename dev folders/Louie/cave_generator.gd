@@ -54,7 +54,13 @@ func generate_level():
 		
 		#_player.tile_pos = location
 		## IFALL DU VILL KUNNA SE DEN GENERERAS
-
+	
+	print("Border Tiles" + str(tileMap.border_tiles.get_used_cells().size()))
+	for cell in tileMap.border_tiles.get_used_cells():
+		var tile_info:TileInfo = TileInfo.new(cell, null, tileMap.border_tiles.get_cell_tile_data(cell))
+		if tile_info.tile_type == TileInfo.TileType.BORDER:
+			tileMap.force_destroy_tile(cell)
+		print("Destroyed : " + str(cell))
 
 	_generate_ore(2, preload("res://scenes/instantiable/ores/gem.tscn"))
 	_generate_ore(5, preload("res://scenes/instantiable/ores/metal.tscn"))

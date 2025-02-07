@@ -100,10 +100,12 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Icons8x8" type="Sprite2D" parent="Control/MarginContainer"]
+visible = false
 position = Vector2(256.267, 12.5333)
 texture = ExtResource("2_6ns7m")
 
 [node name="Icons16x16" type="Sprite2D" parent="Control/MarginContainer"]
+visible = false
 position = Vector2(190.133, -2.66667)
 texture = ExtResource("3_rohyt")
 
@@ -307,14 +309,17 @@ region_rect = Rect2(35, 3, 11, 10)
 unique_name_in_owner = true
 
 [node name="Palette1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(878, 544)
 texture = ExtResource("8_f1q7p")
 
 [node name="Palette1(1)" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(861, 545)
 texture = ExtResource("9_wy8i0")
 
 [node name="PaletteNew" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(869, 545)
 texture = ExtResource("10_2qjpb")
 
